@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends OptionButton
+
+func _on_OptionButton_item_selected(ID):
+	TranslationServer.set_locale(get_item_text(ID))
+"
+
+[node name="LanguagePicker" type="OptionButton"]
+margin_right = 51.0
+margin_bottom = 20.0
+text = "nl"
+items = [ "nl", null, false, 0, null, "en", null, false, 1, null, "pl", null, false, 2, null ]
+selected = 0
+script = SubResource( 1 )
+[connection signal="item_selected" from="." to="." method="_on_OptionButton_item_selected"]

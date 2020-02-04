@@ -1,0 +1,88 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
+[ext_resource path="res://Assets/TerrainData/data.hterrain" type="Resource" id=2]
+[ext_resource path="res://Assets/Textures/ground/sand_albedo_bump.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/ground/sand_normal_roughness.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/ground/grass_albedo_bump.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/ground/grass_normal_roughness.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Textures/ground/rocks_albedo_bump.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/ground/leaves_normal_roughness.png" type="Texture" id=8]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Textures/grass/grass_billboard.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Textures/table_mountain_2_4k.hdr" type="Texture" id=11]
+[ext_resource path="res://Assets/Scenes/CollectibleCube.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Scenes/Egg.tscn" type="PackedScene" id=13]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 11 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+fog_enabled = true
+
+[sub_resource type="PlaneMesh" id=3]
+size = Vector2( 513, 513 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 0.301961, 0.407843, 0.45098, 0.752941 )
+metallic = 0.14
+roughness = 0.24
+
+[node name="TerrainDemo" type="Node"]
+
+[node name="HTerrain" type="Spatial" parent="."]
+script = ExtResource( 1 )
+ambient_wind = 0.136
+_terrain_data = ExtResource( 2 )
+chunk_size = 32
+shader_type = "Classic4"
+custom_shader = null
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_globalmap_blend_start = null
+shader_params/u_globalmap_blend_distance = null
+ground/albedo_bump_0 = ExtResource( 3 )
+ground/normal_roughness_0 = ExtResource( 4 )
+ground/albedo_bump_1 = ExtResource( 5 )
+ground/normal_roughness_1 = ExtResource( 6 )
+ground/albedo_bump_2 = ExtResource( 7 )
+ground/normal_roughness_2 = ExtResource( 8 )
+ground/albedo_bump_3 = null
+ground/normal_roughness_3 = null
+
+[node name="HTerrainDetailLayer" type="Spatial" parent="HTerrain"]
+script = ExtResource( 9 )
+layer_index = 0
+texture = ExtResource( 10 )
+view_distance = 200.0
+custom_shader = null
+density = 6.0
+shader_params/u_terrain_normal_basis = Basis( 1, 0, 0, 0, 1, 0, 0, 0, 1 )
+shader_params/u_globalmap_tint_bottom = 1.0
+shader_params/u_globalmap_tint_top = 0.49
+shader_params/u_bottom_ao = 0.569
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.664735, 0.361564, -0.653758, 0, 0.875085, 0.48397, 0.747079, -0.321712, 0.581699, 0, 0, 0 )
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Sea" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 258.25, 5.22631, 250.518 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Collectible1" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 201.879, 41.1225, 195.041 )
+
+[node name="Egg" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 197.53, 47.2635, 189.666 )
+mass = 20.0
+
+[editable path="Egg"]

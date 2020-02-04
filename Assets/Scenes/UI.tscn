@@ -1,0 +1,326 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/LifeCounter.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/FPSCounter.gd" type="Script" id=2]
+[ext_resource path="res://UI/movebutton.png" type="Texture" id=3]
+[ext_resource path="res://UI/movebuttonPressed.png" type="Texture" id=4]
+[ext_resource path="res://logo.png" type="Texture" id=5]
+
+[node name="UI" type="Node"]
+
+[node name="pause_popup" type="PopupPanel" parent="." index="0"]
+
+pause_mode = 2
+visible = false
+self_modulate = Color( 1, 1, 1, 0.7 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -227.0
+margin_top = -50.0
+margin_right = 226.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+popup_exclusive = false
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Pause", "Popup", "Rect", "Size Flags", "Theme" ]
+
+[node name="text" type="Label" parent="pause_popup" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -158.5
+margin_top = -27.0
+margin_right = 157.5
+margin_bottom = -13.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Spel Gepauzeerd"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="unpause" type="Button" parent="pause_popup" index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.5
+margin_top = -6.0
+margin_right = -29.5
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_right = NodePath("../quit")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Verder Spelen"
+flat = false
+align = 1
+_sections_unfolded = [ "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Pause", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_styles" ]
+
+[node name="quit" type="Button" parent="pause_popup" index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 39.5
+margin_top = -6.0
+margin_right = 140.5
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_neighbour_left = NodePath("../unpause")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Afsluiten"
+flat = false
+align = 1
+_sections_unfolded = [ "Focus", "Rect", "Theme" ]
+
+[node name="LifeCounter" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Margin" ]
+
+[node name="FPSCounter" type="Label" parent="." index="2"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -50.0
+margin_top = 10.0
+margin_right = -20.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="TouchUI" type="Control" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="RightTouchButtonContainer" type="Control" parent="TouchUI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 240.0
+margin_top = -146.0
+margin_right = 272.0
+margin_bottom = -114.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="RightTouchButton" type="TouchScreenButton" parent="TouchUI/RightTouchButtonContainer" index="0"]
+
+position = Vector2( 32, 0 )
+scale = Vector2( -0.3, 0.3 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "ui_right"
+visibility_mode = 1
+_sections_unfolded = [ "Rect", "Transform" ]
+
+[node name="LeftTouchButtonContainer" type="Control" parent="TouchUI" index="1"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -146.0
+margin_right = 62.0
+margin_bottom = -114.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LeftTouchButton" type="TouchScreenButton" parent="TouchUI/LeftTouchButtonContainer" index="0"]
+
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "ui_left"
+visibility_mode = 1
+_sections_unfolded = [ "Rect", "Transform" ]
+
+[node name="JumpTouchButtonContainer2" type="Control" parent="TouchUI" index="2"]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -244.0
+margin_top = -146.0
+margin_right = -212.0
+margin_bottom = -114.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="JumpTouchButton" type="TouchScreenButton" parent="TouchUI/JumpTouchButtonContainer2" index="0"]
+
+position = Vector2( 30, 0 )
+rotation = 1.5708
+scale = Vector2( 0.3, 0.3 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "jump"
+visibility_mode = 1
+_sections_unfolded = [ "Rect", "Transform", "Visibility" ]
+
+[node name="SprintLeftTouchButtonContainer3" type="Control" parent="TouchUI" index="3"]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -132.0
+margin_top = -122.0
+margin_right = -100.0
+margin_bottom = -90.0
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="SprintLeftTouchButton" type="TouchScreenButton" parent="TouchUI/SprintLeftTouchButtonContainer3" index="0"]
+
+normal = ExtResource( 5 )
+pressed = ExtResource( 5 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "sprint"
+visibility_mode = 1
+_sections_unfolded = [ "Rect", "Transform" ]
+
+[node name="Crosshair" type="TextureRect" parent="." index="4"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+
