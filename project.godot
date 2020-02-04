@@ -8,31 +8,29 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "ResourceFormatLoader",
-"class": "HTerrainDataLoader",
-"language": "GDScript",
-"path": "res://addons/zylann.hterrain/hterrain_resource_loader.gd"
-}, {
-"base": "ResourceFormatSaver",
-"class": "HTerrainDataSaver",
-"language": "GDScript",
-"path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"HTerrainDataLoader": "",
-"HTerrainDataSaver": ""
+
 }
 
 [application]
 
 config/name="Egg Simulator"
 run/main_scene="res://Assets/Scenes/World.tscn"
+boot_splash/bg_color=Color( 0.0862745, 0.545098, 0.992157, 1 )
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Global.tscn"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "zylann.hterrain" )
+
+[gui]
+
+theme/custom="res://UI_theme.tres"
 
 [input]
 
@@ -67,6 +65,10 @@ movement_sprint={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_6="Interaction"
+
 [physics]
 
 2d/thread_model=2
@@ -75,4 +77,5 @@ movement_sprint={
 
 quality/driver/fallback_to_gles2=true
 threads/thread_model=2
+environment/default_clear_color=Color( 0.0862745, 0.545098, 0.992157, 1 )
 environment/default_environment="res://default_env.tres"

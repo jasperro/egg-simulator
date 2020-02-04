@@ -1,12 +1,10 @@
 extends VBoxContainer
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://Scenes/testlevel.tscn")
-
+	get_tree().change_scene("res://Assets/Scenes/World.tscn")
 
 func _on_SettingsButton_pressed():
-	pass # Open SettingsMenu scene
-
+	get_tree().change_scene("res://Assets/UI/SettingsMenu.tscn")
 
 func _on_ExitButton_pressed():
-	pass # Exit the game
+	get_tree().quit()
