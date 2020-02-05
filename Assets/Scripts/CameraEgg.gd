@@ -10,4 +10,4 @@ func _ready():
 
 onready var ball = get_parent()
 func _physics_process(delta):
-     set_global_transform(Transform(get_global_transform().basis,ball.get_global_transform().origin))
+	 set_global_transform(Transform(get_global_transform().basis,ball.get_global_transform().origin))

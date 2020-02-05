@@ -5,7 +5,8 @@ script/source = "extends Node
 
 # Globale variabelen
 var collected = 0
-var collectibles = 0"
+var collectibles = 0
+"
 
 [node name="Global" type="Node"]
 

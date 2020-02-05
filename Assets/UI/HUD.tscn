@@ -1,65 +1,73 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/Scripts/CollectCounter.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Scripts/FPSCounter.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scripts/UI/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/UI/CollectCounter.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Scripts/UI/FPSCounter.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Textures/UI/PauseButtonActive.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/UI/PauseButtonInactive.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/PauseButton.gd" type="Script" id=6]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="pause_popup" type="PopupPanel" parent="."]
 pause_mode = 2
-visible = true
 self_modulate = Color( 1, 1, 1, 0.7 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -227.0
-margin_top = -50.0
-margin_right = 226.0
-margin_bottom = 50.0
+margin_left = -158.5
+margin_top = -35.0
+margin_right = 158.5
+margin_bottom = 35.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
-[node name="text" type="Label" parent="pause_popup"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -222.5
-margin_top = -46.0
-margin_right = 222.5
-margin_bottom = 46.0
-size_flags_horizontal = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="text" type="Label" parent="pause_popup/VBoxContainer"]
+margin_right = 301.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "Spel Gepauzeerd"
+text = "Spel gepauzeerd"
 align = 1
 autowrap = true
 
-[node name="unpause" type="Button" parent="pause_popup"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -222.5
-margin_top = -46.0
-margin_right = 222.5
-margin_bottom = 46.0
+[node name="unpause" type="Button" parent="pause_popup/VBoxContainer"]
+margin_top = 26.0
+margin_right = 301.0
+margin_bottom = 48.0
 focus_neighbour_right = NodePath("../quit")
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 size_flags_vertical = 2
-text = "Verder Spelen"
+text = "Verder spelen"
 
-[node name="quit" type="Button" parent="pause_popup"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -222.5
-margin_top = -46.0
-margin_right = 222.5
-margin_bottom = 46.0
+[node name="menu" type="Button" parent="pause_popup/VBoxContainer"]
+margin_top = 52.0
+margin_right = 301.0
+margin_bottom = 74.0
+focus_neighbour_right = NodePath("../quit")
+size_flags_horizontal = 3
+size_flags_vertical = 2
+text = "Terug naar menu"
+
+[node name="quit" type="Button" parent="pause_popup/VBoxContainer"]
+margin_top = 78.0
+margin_right = 301.0
+margin_bottom = 100.0
 focus_neighbour_left = NodePath("../unpause")
 text = "Afsluiten"
 
@@ -72,7 +80,7 @@ mouse_filter = 0
 size_flags_vertical = 1
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="FPSCounter" type="Label" parent="."]
 anchor_left = 1.0
@@ -86,4 +94,14 @@ size_flags_vertical = 1
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 align = 2
-script = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="PauseButton" type="TouchScreenButton" parent="."]
+scale = Vector2( 8, 8 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 4 )
+script = ExtResource( 6 )
+[connection signal="pressed" from="pause_popup/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="pause_popup/VBoxContainer/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="pause_popup/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_PauseButton_pressed"]

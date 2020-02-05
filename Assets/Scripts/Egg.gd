@@ -8,6 +8,9 @@ var rotator_node
 var MOUSE_SENSITIVITY = 1.0
 var JOYPAD_SENSITIVITY = 1.0
 const JOYPAD_DEADZONE = 0.15
+var _initial_position
+
+signal reset_level
 
 func _ready():
 	
@@ -17,13 +20,23 @@ func _ready():
 	
 	# Muis onzichtbaar maken
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_initial_position = get_global_transform()
 
+func _enter_tree():
+	connect("reset_level", get_node("/root/World"), "_reset_level")
 
 func _physics_process(delta):
 	
 	# Herhaal deze functies
-		process_input(delta)
-		process_view_input(delta)
+	process_input(delta)
+	process_view_input(delta)
+	if translation.y < -50 :
+		set_global_transform(_initial_position)
+		sleeping = true
+		get_node("/root/Global/Vars").collected = 0
+		get_node("/root/Global/Vars").collectibles = 0
+		emit_signal("reset_level")
+		
 	# Automatische bewegingsmodus:
 	#	add_central_force(-camera.get_global_transform().basis.z * 100)
 
@@ -44,6 +57,7 @@ func process_input(delta):
 		add_central_force(-camera.get_global_transform().basis.x * 100)
 	if Input.is_action_pressed("movement_right"):
 		add_central_force(camera.get_global_transform().basis.x * 100)
+	add_central_force(camera.get_global_transform().basis.z * Vector3(0, 0, Input.get_accelerometer()[2]*40) + Vector3(Input.get_accelerometer()[0]*-30,0,0))
 	
 	# Check voor joysticks
 	if Input.get_connected_joypads().size() > 0:
