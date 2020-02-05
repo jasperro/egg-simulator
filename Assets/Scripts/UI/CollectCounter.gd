@@ -11,3 +11,7 @@ func _update_collect():
 		collectedgrammar = " Items"
 	set_text("Collected " + str(get_node("/root/Global/Vars").collected)
 	+ collectedgrammar + " of " + str(get_node("/root/Global/Vars").collectibles))
+	
+	if get_node("/root/Global/Vars").collected == get_node("/root/Global/Vars").collectibles:
+		set_text("Eggcelent!")
+		# Winscherm?

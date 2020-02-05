@@ -72,10 +72,10 @@ focus_neighbour_left = NodePath("../unpause")
 text = "Afsluiten"
 
 [node name="CollectionCounter" type="Label" parent="."]
-margin_left = 10.0
+margin_left = 80.0
 margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 30.0
+margin_bottom = 33.0
 mouse_filter = 0
 size_flags_vertical = 1
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -85,10 +85,10 @@ script = ExtResource( 2 )
 [node name="FPSCounter" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -50.0
+margin_left = -30.0
 margin_top = 10.0
-margin_right = -20.0
-margin_bottom = 40.0
+margin_bottom = 33.0
+grow_horizontal = 0
 mouse_filter = 0
 size_flags_vertical = 1
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

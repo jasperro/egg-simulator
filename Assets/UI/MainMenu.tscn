@@ -44,6 +44,3 @@ margin_top = 74.0
 margin_right = 98.0
 margin_bottom = 107.0
 text = "Exit"
-[connection signal="pressed" from="CenterContainer/MenuButtons/StartButton" to="CenterContainer/MenuButtons" method="_on_StartButton_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuButtons/SettingsButton" to="CenterContainer/MenuButtons" method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuButtons/ExitButton" to="CenterContainer/MenuButtons" method="_on_ExitButton_pressed"]

@@ -13,24 +13,5 @@ func _load_level(scene):
 	get_parent().remove_child(level)
 	level.call_deferred("free")
 
-func _on_1_pressed():
-	_load_level("res://Assets/Scenes/Levels/Level1.tscn")
-
-func _on_2_pressed():
+func _on_Next_pressed():
 	_load_level("res://Assets/Scenes/Levels/Level2.tscn")
-
-
-func _on_3_pressed():
-	pass # Replace with function body.
-
-
-func _on_4_pressed():
-	pass # Replace with function body.
-
-
-func _on_5_pressed():
-	pass # Replace with function body.
-
-
-func _on_Test_pressed():
-	_load_level("res://Assets/Scenes/Levels/Test.tscn")

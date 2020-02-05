@@ -80,6 +80,7 @@ escape={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 threads/thread_model=2
 environment/default_clear_color=Color( 0.0862745, 0.545098, 0.992157, 1 )
 environment/default_environment="res://default_env.tres"
