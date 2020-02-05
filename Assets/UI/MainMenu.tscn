@@ -1,12 +1,13 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/Scripts/UI/MenuButtons.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/UI/MainMenu.gd" type="Script" id=1]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,7 +27,6 @@ margin_right = 561.0
 margin_bottom = 353.0
 grow_horizontal = 2
 alignment = 1
-script = ExtResource( 1 )
 
 [node name="StartButton" type="Button" parent="CenterContainer/MenuButtons"]
 margin_right = 98.0
@@ -44,3 +44,6 @@ margin_top = 74.0
 margin_right = 98.0
 margin_bottom = 107.0
 text = "Exit"
+[connection signal="pressed" from="CenterContainer/MenuButtons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuButtons/ExitButton" to="." method="_on_ExitButton_pressed"]

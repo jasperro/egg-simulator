@@ -17,7 +17,6 @@ func _load_level(path):
 	"HUD")[0].get_node("CollectionCounter"), "_update_collect")
 	emit_signal("update_collect")
 	
-	
 func _reset_level():
 	remove_child(current_instance)
 	_load_level("res://Assets/Scenes/Levels/Level2.tscn")
