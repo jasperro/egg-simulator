@@ -20,29 +20,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MenuButtons" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 480.0
-margin_top = 263.0
-margin_right = 543.0
-margin_bottom = 337.0
+margin_left = 463.0
+margin_top = 246.0
+margin_right = 561.0
+margin_bottom = 353.0
 grow_horizontal = 2
 alignment = 1
 script = ExtResource( 1 )
 
 [node name="StartButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_right = 63.0
-margin_bottom = 22.0
+margin_right = 98.0
+margin_bottom = 33.0
 text = "Start"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 26.0
-margin_right = 63.0
-margin_bottom = 48.0
+margin_top = 37.0
+margin_right = 98.0
+margin_bottom = 70.0
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 52.0
-margin_right = 63.0
-margin_bottom = 74.0
+margin_top = 74.0
+margin_right = 98.0
+margin_bottom = 107.0
 text = "Exit"
 [connection signal="pressed" from="CenterContainer/MenuButtons/StartButton" to="CenterContainer/MenuButtons" method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/SettingsButton" to="CenterContainer/MenuButtons" method="_on_SettingsButton_pressed"]

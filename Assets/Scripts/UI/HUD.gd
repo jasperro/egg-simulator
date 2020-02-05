@@ -19,4 +19,5 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_menu_pressed():
-	get_tree().change_scene("res://Assets/UI/MainMenu.tscn")
+	get_tree().get_root().add_child(load("res://Assets/UI/MainMenu.tscn").instance())
+	get_tree().get_root().remove_child(get_node("/root/World"))

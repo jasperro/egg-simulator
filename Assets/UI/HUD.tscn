@@ -3,8 +3,8 @@
 [ext_resource path="res://Assets/Scripts/UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/UI/CollectCounter.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scripts/UI/FPSCounter.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Textures/UI/PauseButtonActive.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Textures/UI/PauseButtonInactive.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Textures/UI/PauseButtonInactive.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/UI/PauseButtonActive.png" type="Texture" id=5]
 [ext_resource path="res://Assets/UI/PauseButton.gd" type="Script" id=6]
 
 [node name="HUD" type="Control"]
@@ -39,7 +39,7 @@ margin_bottom = -8.0
 
 [node name="text" type="Label" parent="pause_popup/VBoxContainer"]
 margin_right = 301.0
-margin_bottom = 22.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Spel gepauzeerd"
@@ -47,27 +47,27 @@ align = 1
 autowrap = true
 
 [node name="unpause" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 26.0
+margin_top = 37.0
 margin_right = 301.0
-margin_bottom = 48.0
+margin_bottom = 70.0
 focus_neighbour_right = NodePath("../quit")
 size_flags_horizontal = 3
 size_flags_vertical = 2
 text = "Verder spelen"
 
 [node name="menu" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 52.0
+margin_top = 74.0
 margin_right = 301.0
-margin_bottom = 74.0
+margin_bottom = 107.0
 focus_neighbour_right = NodePath("../quit")
 size_flags_horizontal = 3
 size_flags_vertical = 2
 text = "Terug naar menu"
 
 [node name="quit" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 78.0
+margin_top = 111.0
 margin_right = 301.0
-margin_bottom = 100.0
+margin_bottom = 144.0
 focus_neighbour_left = NodePath("../unpause")
 text = "Afsluiten"
 
@@ -98,8 +98,8 @@ script = ExtResource( 3 )
 
 [node name="PauseButton" type="TouchScreenButton" parent="."]
 scale = Vector2( 8, 8 )
-normal = ExtResource( 5 )
-pressed = ExtResource( 4 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
 script = ExtResource( 6 )
 [connection signal="pressed" from="pause_popup/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
 [connection signal="pressed" from="pause_popup/VBoxContainer/menu" to="." method="_on_menu_pressed"]
