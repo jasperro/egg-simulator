@@ -19,8 +19,14 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_menu_pressed():
+	get_node("pause_popup").hide()
+	get_node("pause_popup").set_exclusive(false)
 	get_tree().set_pause(false)
 	get_node("/root/Global/Vars").collectibles = 0
 	get_node("/root/Global/Vars").collected = 0
 	get_tree().get_root().add_child(load("res://Assets/UI/MainMenu.tscn").instance())
 	get_tree().get_root().remove_child(get_node("/root/World"))
+
+
+func _on_PauseButton_pressed():
+	_pause_game()

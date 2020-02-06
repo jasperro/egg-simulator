@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Scripts/UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/UI/CollectCounter.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scripts/UI/FPSCounter.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Textures/UI/PauseButtonInactive.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/UI/PauseButtonActive.png" type="Texture" id=5]
-[ext_resource path="res://Assets/UI/PauseButton.gd" type="Script" id=6]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -100,8 +99,8 @@ script = ExtResource( 3 )
 scale = Vector2( 8, 8 )
 normal = ExtResource( 4 )
 pressed = ExtResource( 5 )
-script = ExtResource( 6 )
+visibility_mode = 1
 [connection signal="pressed" from="pause_popup/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
 [connection signal="pressed" from="pause_popup/VBoxContainer/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="pause_popup/VBoxContainer/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]

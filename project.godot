@@ -36,6 +36,7 @@ enabled=PoolStringArray(  )
 
 theme/use_hidpi=true
 theme/custom="res://UI_theme.tres"
+theme/custom_font="res://Assets/Fonts/Inter-Regular.tres"
 
 [input]
 
@@ -82,5 +83,6 @@ escape={
 
 quality/driver/driver_name="GLES2"
 threads/thread_model=2
+vram_compression/import_etc=true
 environment/default_clear_color=Color( 0.0862745, 0.545098, 0.992157, 1 )
 environment/default_environment="res://default_env.tres"

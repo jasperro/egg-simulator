@@ -14,4 +14,5 @@ func _update_collect():
 	
 	if get_node("/root/Global/Vars").collected == get_node("/root/Global/Vars").collectibles:
 		set_text("Eggcelent!")
+		# next_level() -- functie in Global, in World of self?
 		# Winscherm?

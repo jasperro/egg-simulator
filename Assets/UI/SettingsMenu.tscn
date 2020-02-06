@@ -1,8 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Scripts/UI/SettingsMenu.gd" type="Script" id=1]
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,36 +25,50 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 120.0
-margin_bottom = 71.0
+[node name="SettingsButtons" type="VBoxContainer" parent="Panel/ScrollContainer"]
+margin_right = 176.0
+margin_bottom = 109.0
 
-[node name="Button" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_right = 120.0
-margin_bottom = 33.0
-
-[node name="HiDpiToggle" type="CheckButton" parent="Panel/ScrollContainer/VBoxContainer"]
-margin_top = 37.0
-margin_right = 120.0
-margin_bottom = 71.0
+[node name="HiDpiToggle" type="CheckButton" parent="Panel/ScrollContainer/SettingsButtons"]
+margin_right = 176.0
+margin_bottom = 34.0
 text = "HiDPI"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="ShadowsToggle" type="CheckButton" parent="Panel/ScrollContainer/SettingsButtons"]
+margin_top = 38.0
+margin_right = 176.0
+margin_bottom = 72.0
+text = "Shadows"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/SettingsButtons"]
+margin_top = 76.0
+margin_right = 176.0
+margin_bottom = 109.0
+text = "Control Mode"
+
+[node name="Buttons" type="HBoxContainer" parent="Panel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -87.0
 margin_top = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="BackButton" type="Button" parent="Panel/Buttons"]
 margin_right = 63.0
 margin_bottom = 40.0
 text = "Back"
 
-[node name="Save" type="Button" parent="Panel/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="Panel/Buttons"]
 margin_left = 67.0
 margin_right = 130.0
 margin_bottom = 40.0
 text = "Save"
+[connection signal="pressed" from="Panel/Buttons/BackButton" to="." method="_on_BackButton_pressed"]

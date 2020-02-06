@@ -48,16 +48,18 @@ func process_input(delta):
 	# Vector voor alle muisbewegingen/joystickinput
 	var input_movement_vector = Vector2()
 	
-	# Bewegingsvector toetsenbord
-	if Input.is_action_pressed("movement_forward"):
-		add_central_force(-camera.get_global_transform().basis.z * 100)
-	if Input.is_action_pressed("movement_back"):
-		add_central_force(camera.get_global_transform().basis.z * 100)
-	if Input.is_action_pressed("movement_left"):
-		add_central_force(-camera.get_global_transform().basis.x * 100)
-	if Input.is_action_pressed("movement_right"):
-		add_central_force(camera.get_global_transform().basis.x * 100)
-	add_central_force(camera.get_global_transform().basis.z * Vector3(0, 0, Input.get_accelerometer()[2]*40) + Vector3(Input.get_accelerometer()[0]*-30,0,0))
+	# Bewegingsvector toetsenbord & accelerometer
+	if Input.get_accelerometer():
+		add_central_force(camera.get_global_transform().basis.z * Vector3(0, 0, Input.get_accelerometer()[2]*40+200) + Vector3(Input.get_accelerometer()[0]*-30,0,0))
+	else:
+		if Input.is_action_pressed("movement_forward"):
+			add_central_force(-camera.get_global_transform().basis.z * 100)
+		if Input.is_action_pressed("movement_back"):
+			add_central_force(camera.get_global_transform().basis.z * 100)
+		if Input.is_action_pressed("movement_left"):
+			add_central_force(-camera.get_global_transform().basis.x * 100)
+		if Input.is_action_pressed("movement_right"):
+			add_central_force(camera.get_global_transform().basis.x * 100)
 	
 	# Check voor joysticks
 	if Input.get_connected_joypads().size() > 0:
