@@ -47,11 +47,20 @@ func _physics_process(delta):
 			splitegg.get_node("EggTop").set_angular_damp(0.1)
 			splitegg.get_node("EggBottom").set_angular_damp(0.1)
 			mode = RigidBody.MODE_STATIC
-			"""set_global_transform(_initial_position)
+			
+			# Na reset level
+			
+			set_global_transform(_initial_position)
 			sleeping = true
+			$EggWhole.visible = true
+			mode = RigidBody.MODE_RIGID
+			$CollisionShape.disabled = false
+			last_hurrah = false
 			get_node("/root/Global/Vars").collected = 0
 			get_node("/root/Global/Vars").collectibles = 0
-			emit_signal("reset_level")"""
+			emit_signal("reset_level")
+			yield(get_tree().create_timer(5.0), "timeout")
+			splitegg.queue_free()
 		
 	# Automatische bewegingsmodus:
 	#	add_central_force(-camera.get_global_transform().basis.z * 100)

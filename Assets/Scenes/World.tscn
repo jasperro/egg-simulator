@@ -33,6 +33,7 @@ environment = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -30 )
 
 [node name="Floor" type="StaticBody" parent="."]
+visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
 mesh = SubResource( 2 )
