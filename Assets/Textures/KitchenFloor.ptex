@@ -1,0 +1,68 @@
+{
+	"connections": [
+		{
+			"from": "pattern",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 2
+		},
+		{
+			"from": "pattern",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"name": "@@53",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"name": "Material",
+			"node_position": {
+				"x": -36,
+				"y": -22
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao_light_affect": 1,
+				"depth_scale": 1,
+				"emission_energy": 1,
+				"metallic": 0,
+				"normal_scale": 1,
+				"roughness": 0.5,
+				"size": 11,
+				"subsurf_scatter_strength": 0
+			},
+			"type": "material"
+		},
+		{
+			"name": "pattern",
+			"node_position": {
+				"x": -354.5,
+				"y": -16
+			},
+			"parameters": {
+				"mix": 4,
+				"x_scale": 2,
+				"x_wave": 2,
+				"y_scale": 2,
+				"y_wave": 2
+			},
+			"type": "pattern"
+		}
+	],
+	"parameters": {
+
+	},
+	"type": "graph"
+}

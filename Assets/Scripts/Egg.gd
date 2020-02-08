@@ -3,6 +3,8 @@ extends RigidBody
 # Camera en rotatiebron, zodat de camera niet apart berekend hoeft te worden
 var camera
 var rotator_node
+# Variabele wanneer ei gebroken is
+var last_hurrah = false
 
 # Sensitiviteiten
 var MOUSE_SENSITIVITY = 1.0
@@ -30,12 +32,26 @@ func _physics_process(delta):
 	# Herhaal deze functies
 	process_input(delta)
 	process_view_input(delta)
-	if translation.y < -50 :
-		set_global_transform(_initial_position)
-		sleeping = true
-		get_node("/root/Global/Vars").collected = 0
-		get_node("/root/Global/Vars").collectibles = 0
-		emit_signal("reset_level")
+	if !last_hurrah:
+		if translation.y < -45:
+			last_hurrah = true
+			$EggWhole.visible = false
+			$CollisionShape.disabled = true
+			var splitegg = load("res://Assets/Models/Scenes/SplitEgg.tscn").instance()
+			get_node("..").add_child(splitegg)
+			splitegg.set_transform(get_transform())
+			splitegg.get_node("EggTop").set_linear_velocity(get_linear_velocity())
+			splitegg.get_node("EggBottom").set_linear_velocity(get_linear_velocity())
+			splitegg.get_node("EggTop").set_angular_velocity(get_angular_velocity()*0.2)
+			splitegg.get_node("EggBottom").set_angular_velocity(get_angular_velocity()*0.3)
+			splitegg.get_node("EggTop").set_angular_damp(0.1)
+			splitegg.get_node("EggBottom").set_angular_damp(0.1)
+			mode = RigidBody.MODE_STATIC
+			"""set_global_transform(_initial_position)
+			sleeping = true
+			get_node("/root/Global/Vars").collected = 0
+			get_node("/root/Global/Vars").collectibles = 0
+			emit_signal("reset_level")"""
 		
 	# Automatische bewegingsmodus:
 	#	add_central_force(-camera.get_global_transform().basis.z * 100)

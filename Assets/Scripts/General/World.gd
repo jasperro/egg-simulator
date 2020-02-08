@@ -3,14 +3,6 @@ extends Node
 var current_instance
 var current_level
 
-func _ready():
-	# Laad level (Scene Instancing),
-	# is het slim om deze code hier te zetten?
-	# Of beter een method met connect()?
-	#_load_level("res://Assets/Scenes/Levels/Level1.tscn")
-	pass
-
-
 func _load_level(path):
 	current_level = path
 	current_instance = load(path).instance()
@@ -23,4 +15,3 @@ func _load_level(path):
 func _reset_level():
 	remove_child(current_instance)
 	_load_level(current_level)
-	_ready()

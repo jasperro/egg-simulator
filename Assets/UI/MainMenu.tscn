@@ -24,28 +24,28 @@ __meta__ = {
 }
 
 [node name="MenuButtons" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 463.0
-margin_top = 246.0
-margin_right = 561.0
-margin_bottom = 353.0
+margin_left = 428.0
+margin_top = 210.0
+margin_right = 596.0
+margin_bottom = 389.0
 grow_horizontal = 2
 alignment = 1
 
 [node name="StartButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_right = 98.0
-margin_bottom = 33.0
+margin_right = 168.0
+margin_bottom = 57.0
 text = "Start"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 37.0
-margin_right = 98.0
-margin_bottom = 70.0
+margin_top = 61.0
+margin_right = 168.0
+margin_bottom = 118.0
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 74.0
-margin_right = 98.0
-margin_bottom = 107.0
+margin_top = 122.0
+margin_right = 168.0
+margin_bottom = 179.0
 text = "Exit"
 [connection signal="pressed" from="CenterContainer/MenuButtons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
