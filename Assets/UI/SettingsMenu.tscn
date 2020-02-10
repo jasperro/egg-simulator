@@ -30,25 +30,23 @@ __meta__ = {
 }
 
 [node name="SettingsButtons" type="VBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 176.0
-margin_bottom = 109.0
+margin_right = 446.0
+margin_bottom = 118.0
 
-[node name="HiDpiToggle" type="CheckButton" parent="Panel/ScrollContainer/SettingsButtons"]
-margin_right = 176.0
-margin_bottom = 34.0
-text = "HiDPI"
+[node name="Vsync" type="CheckButton" parent="Panel/ScrollContainer/SettingsButtons" groups=[
+"Buttons",
+]]
+margin_right = 446.0
+margin_bottom = 57.0
+text = "Vsync"
 
-[node name="ShadowsToggle" type="CheckButton" parent="Panel/ScrollContainer/SettingsButtons"]
-margin_top = 38.0
-margin_right = 176.0
-margin_bottom = 72.0
-text = "Shadows"
-
-[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/SettingsButtons"]
-margin_top = 76.0
-margin_right = 176.0
-margin_bottom = 109.0
-text = "Control Mode"
+[node name="TouchControlMode" type="CheckButton" parent="Panel/ScrollContainer/SettingsButtons" groups=[
+"Buttons",
+]]
+margin_top = 61.0
+margin_right = 446.0
+margin_bottom = 118.0
+text = "Touch Control Mode"
 
 [node name="Buttons" type="HBoxContainer" parent="Panel"]
 anchor_left = 1.0
@@ -62,13 +60,14 @@ __meta__ = {
 }
 
 [node name="BackButton" type="Button" parent="Panel/Buttons"]
-margin_right = 63.0
-margin_bottom = 40.0
+margin_right = 105.0
+margin_bottom = 57.0
 text = "Back"
 
 [node name="SaveButton" type="Button" parent="Panel/Buttons"]
-margin_left = 67.0
-margin_right = 130.0
-margin_bottom = 40.0
+margin_left = 109.0
+margin_right = 215.0
+margin_bottom = 57.0
 text = "Save"
 [connection signal="pressed" from="Panel/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Panel/Buttons/SaveButton" to="." method="_on_SaveButton_pressed"]

@@ -30,10 +30,9 @@ shadow_enabled = true
 environment = ExtResource( 3 )
 
 [node name="Egg" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -30 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0 )
 
 [node name="Floor" type="StaticBody" parent="."]
-visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
 mesh = SubResource( 2 )

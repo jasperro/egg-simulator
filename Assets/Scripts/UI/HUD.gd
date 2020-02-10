@@ -11,7 +11,7 @@ func _pause_game():
 	get_tree().set_pause(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-func _input(event):
+func _input(_event):
 	if (Input.is_action_pressed("escape")):
 		_pause_game()
 
@@ -26,7 +26,6 @@ func _on_menu_pressed():
 	get_node("/root/Global/Vars").collected = 0
 	get_tree().get_root().add_child(load("res://Assets/UI/MainMenu.tscn").instance())
 	get_tree().get_root().remove_child(get_node("/root/World"))
-
 
 func _on_PauseButton_pressed():
 	_pause_game()

@@ -2,13 +2,13 @@ extends Area
 
 signal update_collect
 
-func _on_Collectible_area_entered(area):
+func _on_Collectible_area_entered(_area):
 	get_node("/root/Global/Vars").collected += 1
 	$AnimationPlayer.play("collect")
 	emit_signal("update_collect")
 	$AnimationPlayer.connect("animation_finished", self, "_do_anim_finished", ["collect"])
 
-func _do_anim_finished(a,b):
+func _do_anim_finished(__,__):
 	queue_free()
 	
 func _enter_tree():

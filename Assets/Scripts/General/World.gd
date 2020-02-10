@@ -7,10 +7,6 @@ func _load_level(path):
 	current_level = path
 	current_instance = load(path).instance()
 	add_child(current_instance)
-	connect("update_collect", get_tree().get_nodes_in_group(
-	"HUD")[0].get_node("CollectionCounter"), "_update_collect")
-	emit_signal("update_collect")
-	
 	
 func _reset_level():
 	remove_child(current_instance)

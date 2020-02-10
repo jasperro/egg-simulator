@@ -73,7 +73,8 @@ escape={
 
 [layer_names]
 
-3d_physics/layer_6="Interaction"
+3d_physics/layer_6="Collectible"
+3d_physics/layer_7="Action"
 
 [physics]
 
