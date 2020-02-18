@@ -1,0 +1,31 @@
+{
+  "categories": {
+    "beginnings": {
+      "name": "Beginnings",
+      "description": "Get to know the egg",
+      "levelroot": "res://Assets/Scenes/Levels/Beginnings/",
+      "levels": {
+        "Level1": {},
+        "Level2": {}
+      }
+    },
+    "trampolines": {
+      "name": "Trampolines",
+      "description": "Use trampolines",
+      "levelroot": "res://Assets/Scenes/Levels/Trampolines/",
+      "levels": {
+        "Level1": {},
+        "Level2": {}
+      }
+    },
+    "what now?": {
+      "name": "What now?",
+      "description": "???",
+      "levelroot": "res://Assets/Scenes/Levels/Beginnings/",
+      "levels": {
+        "Level1": {},
+        "Test": {}
+      }
+    }
+  }
+}

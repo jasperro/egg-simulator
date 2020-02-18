@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Scripts/Conveyor.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.498039, 0.14902, 0.14902, 1 )
+metallic = 1.0
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+size = Vector3( 4, 1, 10 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2, 0.5, 5 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2, 0.6, 5 )
+
+[node name="ConveyorPlatform" type="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 20 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="ConveyorCollider" type="Area" parent="."]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="ConveyorCollider"]
+shape = SubResource( 4 )
+[connection signal="area_entered" from="ConveyorCollider" to="ConveyorCollider" method="_on_ConveyorCollider_area_entered"]

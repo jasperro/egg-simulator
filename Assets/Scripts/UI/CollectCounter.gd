@@ -13,6 +13,6 @@ func _update_collect():
 	+ collectedgrammar + " of " + str(get_node("/root/Global/Vars").collectibles))
 	
 	if get_node("/root/Global/Vars").collected == get_node("/root/Global/Vars").collectibles:
-		set_text("Eggcelent!")
+		set_text("Eggcellent!")
 		# next_level() -- functie in Global, in World of self?
 		# Winscherm?

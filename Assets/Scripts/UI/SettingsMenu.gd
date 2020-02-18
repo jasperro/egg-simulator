@@ -25,9 +25,9 @@ func _get_config_value(section, option):
 	var value
 	value = _config_file.get_value(section, option)
 	if value == null:
-		return _default_settings[section][option]
-	else:
-		return value
+		value = _default_settings[section][option]
+	_settings[section][option] = value
+	return value
 
 func _load_settings():
 	var loaderror = _config_file.load(SETTINGS_PATH)

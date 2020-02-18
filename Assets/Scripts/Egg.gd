@@ -8,6 +8,7 @@ var splitegg
 var last_hurrah = false
 # Positie van ei in het begin, standaard y=50
 var _initial_position
+var hud_node
 
 # Sensitiviteiten
 export var MOUSE_SENSITIVITY = 1.0
@@ -24,6 +25,7 @@ func _ready():
 	# Muis onzichtbaar maken
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	_initial_position = get_global_transform()
+	hud_node = get_tree().get_nodes_in_group("HUD")[0]
 
 func _enter_tree():
 	connect("reset_level", get_node("/root/World"), "_reset_level")
