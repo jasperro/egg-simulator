@@ -77,6 +77,10 @@ escape={
 3d_physics/layer_6="Collectible"
 3d_physics/layer_7="Action"
 
+[locale]
+
+translations=PoolStringArray( "res://Assets/Localisation/translations.en.translation", "res://Assets/Localisation/translations.nl.translation" )
+
 [physics]
 
 2d/thread_model=2

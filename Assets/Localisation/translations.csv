@@ -1,0 +1,20 @@
+,nl,en
+i18n_PLAY,"Speel","Play"
+i18n_SETTINGS,Instellingen,Settings
+i18n_BACK,Terug,Back
+i18n_NEXT,Volgende,Next
+i18n_EXITTOMENU,Verlaat naar menu,Exit to menu
+i18n_SKIP,Overslaan,Skip
+i18n_UNPAUSE,Verder spelen,Unpause
+i18n_PAUSED,Spel gepauzeerd,Paused game
+i18n_EXIT,Sluit spel af,Exit game
+i18n_SAVE,Opslaan,Save
+i18n_settings_TOUCHCONTROL,Vingerbesturing,Touch controls
+i18n_settings_LANGUAGE,Taal,Language
+i18n_LEVELSELECT,Selecteer een level,Select a level
+i18n_categorydesc_BEGINNINGS,Leer het ei kennen,Learn the ways of the egg
+i18n_categorydesc_TRAMPOLINES,Gebruik trampolines om te springen,Use trampolines to jump
+i18n_hud_COLLECTED,verzameld,Collected
+i18n_hud_ITEM,objecten,item
+i18n_hud_ITEMS,objecten,items
+i18n_hud_OF,van de,of

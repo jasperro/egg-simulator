@@ -37,38 +37,38 @@ margin_right = -8.0
 margin_bottom = -8.0
 
 [node name="text" type="Label" parent="pause_popup/VBoxContainer"]
-margin_right = 301.0
-margin_bottom = 33.0
+margin_right = 369.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "Spel gepauzeerd"
+text = "i18n_PAUSED"
 align = 1
 autowrap = true
 
 [node name="unpause" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 37.0
-margin_right = 301.0
-margin_bottom = 70.0
+margin_top = 61.0
+margin_right = 369.0
+margin_bottom = 118.0
 focus_neighbour_right = NodePath("../quit")
 size_flags_horizontal = 3
 size_flags_vertical = 2
-text = "Verder spelen"
+text = "i18n_UNPAUSE"
 
 [node name="menu" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 74.0
-margin_right = 301.0
-margin_bottom = 107.0
+margin_top = 148.0
+margin_right = 369.0
+margin_bottom = 205.0
 focus_neighbour_right = NodePath("../quit")
 size_flags_horizontal = 3
 size_flags_vertical = 2
-text = "Terug naar menu"
+text = "i18n_EXITTOMENU"
 
 [node name="quit" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 111.0
-margin_right = 301.0
-margin_bottom = 144.0
+margin_top = 235.0
+margin_right = 369.0
+margin_bottom = 292.0
 focus_neighbour_left = NodePath("../unpause")
-text = "Afsluiten"
+text = "i18n_EXIT"
 
 [node name="CollectionCounter" type="Label" parent="."]
 margin_left = 80.0

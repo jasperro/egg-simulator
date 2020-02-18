@@ -4,35 +4,17 @@ func _on_BackButton_pressed():
 	get_tree().change_scene_to(load("res://Assets/UI/MainMenu.tscn"))
 	get_tree().get_root().remove_child(get_node("."))
 
-const SETTINGS_PATH = "user://settings.cfg"
-var _config_file = ConfigFile.new()
-
-var _default_settings = {
-	"Video": {
-		"Vsync": ProjectSettings.get_setting("display/window/vsync/use_vsync"),
-		"BackgroundColor": ProjectSettings.get_setting("rendering/environment/default_clear_color")
-	},
-	"Control": {
-		"TouchControlMode": true
-		}
-	}
-var _settings = _default_settings
+var _language_indexes = {}
+onready var global = get_node("/root/Global")
 
 func _ready():
+	global._load_settings()
 	_load_settings()
 	
 func _get_config_value(section, option):
-	var value
-	value = _config_file.get_value(section, option)
-	if value == null:
-		value = _default_settings[section][option]
-	_settings[section][option] = value
-	return value
+	return global._get_config_value(section, option)
 
 func _load_settings():
-	var loaderror = _config_file.load(SETTINGS_PATH)
-	if loaderror != OK:
-		print("No config file available")
 	for button in get_tree().get_nodes_in_group("Buttons"):
 		if button is CheckButton:
 			button.connect("toggled", self, "_on_" + button.name + "_toggled", [button])
@@ -43,19 +25,36 @@ func _load_settings():
 				button.set_pressed(_get_config_value("Video","Vsync"))
 			"TouchControlMode":
 				button.set_pressed(_get_config_value("Control","TouchControlMode"))
-
-func _save_settings():
-	for section in _settings.keys():
-		for key in _settings[section].keys():
-			_config_file.set_value(section, key, _settings[section][key])
-			_config_file.save(SETTINGS_PATH)
+			"Language":
+				button.add_item("Default")
+				var language = _get_config_value("Other","Language")
+				var iter = 1
+				for l in TranslationServer.get_loaded_locales():
+					_language_indexes[l] = iter
+					iter+=1
+					button.add_item(TranslationServer.get_locale_name(l))
+				if language == "default":
+					button.select(0)
+				else:
+					if language == "en":
+						button.select(_language_indexes["en"])
+					elif language == "nl":
+						button.select(_language_indexes["nl"])
 
 func _on_SaveButton_pressed():
-	_save_settings()
+	global._save_settings()
 
 # Button signal methods
 func _on_Vsync_toggled(button_pressed, _button):
-	_settings["Video"]["Vsync"] = button_pressed
+	global._settings["Video"]["Vsync"] = button_pressed
 
 func _on_TouchControlMode_toggled(button_pressed, _button):
-	_settings["Control"]["TouchControlMode"] = button_pressed
+	global._settings["Control"]["TouchControlMode"] = button_pressed
+	
+func _on_Language_item_selected(id, _button):
+	if id > 0:
+		TranslationServer.set_locale(TranslationServer.get_loaded_locales()[id-1])
+		global._settings["Other"]["Language"] = TranslationServer.get_locale()
+	else:
+		TranslationServer.set_locale(OS.get_locale())
+		global._settings["Other"]["Language"] = "default"

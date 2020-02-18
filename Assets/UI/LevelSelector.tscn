@@ -13,9 +13,17 @@ __meta__ = {
 [node name="Banner" type="Label" parent="."]
 anchor_right = 1.0
 margin_bottom = 57.0
-text = "Level Select"
+text = "i18n_LEVELSELECT"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 57.0
+text = "i18n_BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,3 +42,4 @@ __meta__ = {
 
 [node name="CategorySelector" type="VBoxContainer" parent="CategoryContainer"]
 alignment = 1
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

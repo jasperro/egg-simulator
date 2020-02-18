@@ -2,7 +2,7 @@
   "categories": {
     "beginnings": {
       "name": "Beginnings",
-      "description": "Get to know the egg",
+      "description": "i18n_categorydesc_BEGINNINGS",
       "levelroot": "res://Assets/Scenes/Levels/Beginnings/",
       "levels": {
         "Level1": {},
@@ -11,7 +11,7 @@
     },
     "trampolines": {
       "name": "Trampolines",
-      "description": "Use trampolines",
+      "description": "i18n_categorydesc_TRAMPOLINES",
       "levelroot": "res://Assets/Scenes/Levels/Trampolines/",
       "levels": {
         "Level1": {},

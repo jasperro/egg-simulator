@@ -13,7 +13,7 @@ func _ready():
 	for key in levels["categories"]:
 		iter+=1
 		var button = Button.new()
-		button.set_text(str(iter) + " " + levels["categories"][key]["description"])
+		button.set_text(str(iter) + " " + tr(levels["categories"][key]["description"]))
 		levels["categories"][key]["button"] = button
 		$CategoryContainer/CategorySelector.add_child(button)
 		button.connect("pressed", self, "_category_button_pressed", [button])
@@ -36,6 +36,15 @@ func _category_button_pressed(button):
 
 func _level_button_pressed(scene):
 	_load_level(scene)
+
+func _on_BackButton_pressed():
+	if $LevelContainer:
+		$CategoryContainer.visible = true
+		remove_child($LevelContainer)
+	else:
+		get_tree().change_scene_to(load("res://Assets/UI/MainMenu.tscn"))
+		get_tree().get_root().remove_child(get_node("."))
+
 
 func _load_level(scene):
 	var level = get_node(".")

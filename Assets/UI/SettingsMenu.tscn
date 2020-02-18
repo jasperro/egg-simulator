@@ -30,13 +30,13 @@ __meta__ = {
 }
 
 [node name="SettingsButtons" type="VBoxContainer" parent="Panel/ScrollContainer"]
-margin_right = 446.0
-margin_bottom = 118.0
+margin_right = 660.0
+margin_bottom = 179.0
 
 [node name="Vsync" type="CheckButton" parent="Panel/ScrollContainer/SettingsButtons" groups=[
 "Buttons",
 ]]
-margin_right = 446.0
+margin_right = 660.0
 margin_bottom = 57.0
 text = "Vsync"
 
@@ -44,30 +44,43 @@ text = "Vsync"
 "Buttons",
 ]]
 margin_top = 61.0
-margin_right = 446.0
+margin_right = 660.0
 margin_bottom = 118.0
-text = "Touch Control Mode"
+text = "i18n_settings_TOUCHCONTROL"
+
+[node name="Language" type="OptionButton" parent="Panel/ScrollContainer/SettingsButtons" groups=[
+"Buttons",
+]]
+margin_top = 122.0
+margin_right = 660.0
+margin_bottom = 179.0
+text = "i18n_settings_LANGUAGE"
 
 [node name="Buttons" type="HBoxContainer" parent="Panel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -87.0
-margin_top = -40.0
+margin_left = -448.0
+margin_top = -77.0
+margin_right = -20.0
+margin_bottom = -20.0
+grow_horizontal = 0
+alignment = 2
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="BackButton" type="Button" parent="Panel/Buttons"]
-margin_right = 105.0
+margin_right = 214.0
 margin_bottom = 57.0
-text = "Back"
+text = "i18n_BACK"
 
 [node name="SaveButton" type="Button" parent="Panel/Buttons"]
-margin_left = 109.0
-margin_right = 215.0
+margin_left = 218.0
+margin_right = 428.0
 margin_bottom = 57.0
-text = "Save"
+text = "i18n_SAVE"
 [connection signal="pressed" from="Panel/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Panel/Buttons/SaveButton" to="." method="_on_SaveButton_pressed"]
