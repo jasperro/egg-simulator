@@ -71,15 +71,18 @@ focus_neighbour_left = NodePath("../unpause")
 text = "i18n_EXIT"
 
 [node name="CollectionCounter" type="Label" parent="."]
-margin_left = 80.0
-margin_top = 10.0
-margin_right = 30.0
-margin_bottom = 33.0
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
 mouse_filter = 0
 size_flags_vertical = 1
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
+align = 1
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FPSCounter" type="Label" parent="."]
 anchor_left = 1.0
