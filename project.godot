@@ -19,6 +19,8 @@ config/name="Egg Simulator"
 run/main_scene="res://Assets/UI/MainMenu.tscn"
 boot_splash/bg_color=Color( 0.0862745, 0.545098, 0.992157, 1 )
 config/icon="res://icon.png"
+config/name_en="Egg Simulator"
+config/name_nl="Eisimulator"
 
 [autoload]
 

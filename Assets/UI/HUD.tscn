@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scripts/UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/UI/CollectCounter.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Scripts/UI/FPSCounter.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Textures/UI/PauseButtonInactive.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/UI/PauseButtonActive.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Scripts/UI/TimerCounter.gd" type="Script" id=6]
 
-[node name="HUD" type="Control"]
+[node name="HUD" type="Control" groups=[
+"HUD",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -85,6 +88,7 @@ __meta__ = {
 }
 
 [node name="FPSCounter" type="Label" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -30.0
@@ -97,6 +101,23 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 align = 2
 script = ExtResource( 3 )
+
+[node name="TimerCounter" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_top = 10.0
+margin_bottom = 33.0
+grow_horizontal = 0
+mouse_filter = 0
+size_flags_vertical = 1
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+align = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PauseButton" type="TouchScreenButton" parent="."]
 scale = Vector2( 8, 8 )

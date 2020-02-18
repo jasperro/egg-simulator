@@ -6,7 +6,6 @@ var collectibles = 0
 var wordorder = 0
 
 func _enter_tree():
-	print(TranslationServer.get_locale())
 	if TranslationServer.get_locale() == "nl":
 		wordorder = 1
 
@@ -20,8 +19,8 @@ func _update_collect():
 		+ " " + tr("i18n_hud_OF") + " " + str(get_node("/root/Global/Vars").collectibles) + collectedgrammar
 		+ " " + tr("i18n_hud_COLLECTED"))
 	else:
-		set_text("Collected " + str(get_node("/root/Global/Vars").collected)
-		+ collectedgrammar + " of " + str(get_node("/root/Global/Vars").collectibles))
+		set_text(tr("i18n_hud_COLLECTED") + " " + str(get_node("/root/Global/Vars").collected)
+		+ collectedgrammar + " " + tr("i18n_hud_OF") + " " + str(get_node("/root/Global/Vars").collectibles))
 	
 	if get_node("/root/Global/Vars").collected == get_node("/root/Global/Vars").collectibles:
 		set_text("Eggcellent!")

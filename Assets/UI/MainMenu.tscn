@@ -47,6 +47,16 @@ margin_top = 122.0
 margin_right = 305.0
 margin_bottom = 179.0
 text = "i18n_EXIT"
+
+[node name="Banner" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 57.0
+text = "i18n_TITLE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="CenterContainer/MenuButtons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/ExitButton" to="." method="_on_ExitButton_pressed"]

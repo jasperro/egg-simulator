@@ -13,8 +13,11 @@ var hud_node
 # Sensitiviteiten
 export var MOUSE_SENSITIVITY = 1.0
 export var TOUCH_SENSITIVITY = 0.7
+export var KB_VECTOR_MODIFIER = 80
+onready var timercounter = get_tree().get_nodes_in_group("HUD")[0].get_node("TimerCounter")
 
 signal reset_level
+signal reset_timer
 
 func _ready():
 	
@@ -27,8 +30,8 @@ func _ready():
 	_initial_position = get_global_transform()
 	hud_node = get_tree().get_nodes_in_group("HUD")[0]
 
-func _enter_tree():
 	connect("reset_level", get_node("/root/World"), "_reset_level")
+	connect("reset_timer", timercounter, "_reset")
 
 func _physics_process(delta):
 	
@@ -36,6 +39,7 @@ func _physics_process(delta):
 	process_input(delta)
 	if !last_hurrah:
 		if translation.y < -45:
+			timercounter.stop = true
 			last_hurrah = true
 			$EggWhole.visible = false
 			$CollisionShape.disabled = true
@@ -51,7 +55,9 @@ func _physics_process(delta):
 			mode = RigidBody.MODE_STATIC
 			
 	elif last_hurrah:
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_action_pressed("ui_accept") or Input.is_mouse_button_pressed(1):
+			emit_signal("reset_timer")
+			emit_signal("update_collect")
 			set_global_transform(_initial_position)
 			sleeping = true
 			$EggWhole.visible = true
@@ -61,8 +67,8 @@ func _physics_process(delta):
 			get_node("/root/Global/Vars").collected = 0
 			get_node("/root/Global/Vars").collectibles = 0
 			emit_signal("reset_level")
-			#yield(get_tree().create_timer(5.0), "timeout")
 			splitegg.queue_free()
+			timercounter.stop = false
 		
 	# Automatische bewegingsmodus:
 	#	add_central_force(-camera.get_global_transform().basis.z * 100)
@@ -77,13 +83,13 @@ func process_input(_delta):
 		add_central_force(camera.get_global_transform().basis.z * Vector3(0, 0, Input.get_accelerometer()[2]*40+200) + Vector3(Input.get_accelerometer()[0]*-30,0,0))
 
 	if Input.is_action_pressed("movement_forward"):
-		add_central_force(-camera.get_global_transform().basis.z * 100)
+		add_central_force(-camera.get_global_transform().basis.z * KB_VECTOR_MODIFIER)
 	if Input.is_action_pressed("movement_back"):
-		add_central_force(camera.get_global_transform().basis.z * 100)
+		add_central_force(camera.get_global_transform().basis.z * KB_VECTOR_MODIFIER)
 	if Input.is_action_pressed("movement_left"):
-		add_central_force(-camera.get_global_transform().basis.x * 100)
+		add_central_force(-camera.get_global_transform().basis.x * KB_VECTOR_MODIFIER)
 	if Input.is_action_pressed("movement_right"):
-		add_central_force(camera.get_global_transform().basis.x * 100)
+		add_central_force(camera.get_global_transform().basis.x * KB_VECTOR_MODIFIER)
 	
 	# Muis vastpakken
 	
