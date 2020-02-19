@@ -6,7 +6,7 @@ var collectibles = 0
 var wordorder = 0
 
 func _enter_tree():
-	if TranslationServer.get_locale() == "nl":
+	if TranslationServer.get_locale().find("nl") != -1:
 		wordorder = 1
 
 func _update_collect():

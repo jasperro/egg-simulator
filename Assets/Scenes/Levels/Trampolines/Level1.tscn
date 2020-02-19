@@ -22,7 +22,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5214, 35.9668, 27.3091 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.2993, 17.2101, 25.5585 )
 
 [node name="Collectible5" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1625, 21.5982, 38.5737 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1625, 16.7657, 38.5737 )
 
 [node name="Platforms" parent="." instance=ExtResource( 4 )]
 platformcolor = Color( 0, 0.462745, 1, 1 )

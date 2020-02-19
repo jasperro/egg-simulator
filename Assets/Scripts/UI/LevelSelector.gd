@@ -1,20 +1,21 @@
 extends Control
 
 var world
-var levels
+var leveldata
 onready var levelcontainer_ps=preload("res://Assets/UI/LevelContainer.tscn")
+onready var global=get_node("/root/Global")
 
 func _ready():
 	world = load("res://Assets/Scenes/World.tscn")
 	var file = File.new()
 	file.open("res://Assets/Data/levels.json", File.READ)
-	levels = parse_json(file.get_as_text())
+	leveldata = parse_json(file.get_as_text())
 	var iter = 0
-	for key in levels["categories"]:
+	for key in leveldata["categories"]:
 		iter+=1
 		var button = Button.new()
-		button.set_text(str(iter) + " " + tr(levels["categories"][key]["description"]))
-		levels["categories"][key]["button"] = button
+		button.set_text(str(iter) + " " + tr(leveldata["categories"][key]["description"]))
+		leveldata["categories"][key]["button"] = button
 		$CategoryContainer/CategorySelector.add_child(button)
 		button.connect("pressed", self, "_category_button_pressed", [button])
 		
@@ -23,19 +24,28 @@ func _category_button_pressed(button):
 	var iter = 0
 	var levelcontainer = levelcontainer_ps.instance()
 	add_child(levelcontainer)
-	var levelselector = $LevelContainer/LevelSelector
-	for i in levels["categories"]:
-		if levels["categories"][i]["button"] == button:
-			if levels["categories"][i].has("levels"):
-				for e in levels["categories"][i]["levels"]:
+	var LevelSelector = $LevelContainer/LevelSelector
+	
+	for i in leveldata["categories"]:
+		if leveldata["categories"][i]["button"] == button:
+			if leveldata["categories"][i].has("levelroot"):
+				var levels = global._list_files_in_directory(leveldata["categories"][i]["levelroot"])
+				levels.sort_custom(self, "_alphasort")
+				for e in levels:
 					iter+=1
 					var newbutton = Button.new()
 					newbutton.set_text(str(e) + " - " + str(iter))
-					levelselector.add_child(newbutton)
-					newbutton.connect("pressed", self, "_level_button_pressed", [levels["categories"][i]["levelroot"] + e + ".tscn"])
+					LevelSelector.add_child(newbutton)
+					newbutton.connect("pressed", self, "_level_button_pressed", [leveldata["categories"][i]["levelroot"] + e])
 
 func _level_button_pressed(scene):
 	_load_level(scene)
+
+func _alphasort(a, b):
+	if typeof(a) != typeof(b):
+		return typeof(a) < typeof(b)
+	else:
+		return a < b
 
 func _on_BackButton_pressed():
 	if $LevelContainer:

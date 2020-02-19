@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Scenes/CollectibleCube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scenes/Platforms/Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Platforms.tscn" type="PackedScene" id=3]
+
+[node name="Level" type="Spatial"]
+
+[node name="Collectibles" type="Spatial" parent="."]
+
+[node name="Collectible1" parent="Collectibles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73714, 41.2883, 7.65494 )
+
+[node name="Collectible2" parent="Collectibles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22907, 36.2615, 15.202 )
+
+[node name="Collectible3" parent="Collectibles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23316, 29.1375, 9.81355 )
+
+[node name="Collectible4" parent="Collectibles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19693, 26.3098, 0.683407 )
+
+[node name="Collectible5" parent="Collectibles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8464, 18.6197, 1.28995 )
+
+[node name="Collectible6" parent="Collectibles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8136, 17.0197, 1.25676 )
+
+[node name="Platforms" parent="." instance=ExtResource( 3 )]
+platformcolor = Color( 1, 0.329412, 0, 1 )
+
+[node name="Platform1" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( 0.711376, -0.181901, -0.678864, 0, 0.965926, -0.258819, 0.702811, 0.184118, 0.687137, -1.73419, 43.7885, 2.10922 )
+
+[node name="Platform2" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( 0.808762, 0.185914, 0.557978, 0.220242, 0.783955, -0.580438, -0.545341, 0.592327, 0.593087, -5.41988, 37.1421, 9.22609 )
+
+[node name="Platform8" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( 0.393027, -0.728335, 0.5613, 0.819152, -1.33457e-07, -0.573576, 0.417756, 0.685221, 0.596617, -7.85281, 37.3968, 11.1599 )
+
+[node name="Platform3" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( -0.262003, 0.219846, 0.939693, -0.719846, 0.604023, -0.34202, -0.642787, -0.766045, -1.53095e-07, 0.945342, 33.6726, 16.2857 )
+
+[node name="Platform4" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( 0.939693, -0.34202, 0, 0.296198, 0.813797, 0.5, -0.17101, -0.469846, 0.866025, 4.636, 27.45, 10 )
+
+[node name="Platform9" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, -1, 0, 0.866025, -1.41093e-07, 0.5, -0.5, 8.14603e-08, 0.866025, 7.87336, 29.5191, 10 )
+
+[node name="Platform5" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0.0283404, 0.999599, 0, 0.999598, -0.0283404, -0.999999, -4.61723e-09, -1.62855e-07, 2.96138, 23.8303, 0.721109 )
+
+[node name="Platform6" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 2, 0, 1, 0, -1, 0, -3.25841e-07, 8.28078, 16.6256, 1.04161 )
+
+[node name="Platform10" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( -1.15202e-07, 1.15202e-07, 2, 0.707107, 0.707107, 0, -0.707107, 0.707107, -3.25841e-07, 8.28078, 20.2627, -5.30621 )
+
+[node name="Platform7" parent="Platforms" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 0.999999, 0, -1, 0, -1.62921e-07, -7.36998, 14.6058, 1.04161 )

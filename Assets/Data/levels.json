@@ -3,32 +3,17 @@
     "beginnings": {
       "name": "Beginnings",
       "description": "i18n_categorydesc_BEGINNINGS",
-      "levelroot": "res://Assets/Scenes/Levels/Beginnings/",
-      "levels": {
-        "Level1": {},
-        "Level2": {},
-        "Level3": {},
-        "Level4": {},
-        "Level5": {}
-      }
+      "levelroot": "res://Assets/Scenes/Levels/Beginnings/"
     },
     "trampolines": {
       "name": "Trampolines",
       "description": "i18n_categorydesc_TRAMPOLINES",
-      "levelroot": "res://Assets/Scenes/Levels/Trampolines/",
-      "levels": {
-        "Level1": {},
-        "Level2": {}
-      }
+      "levelroot": "res://Assets/Scenes/Levels/Trampolines/"
     },
     "what now?": {
       "name": "What now?",
       "description": "???",
-      "levelroot": "res://Assets/Scenes/Levels/Beginnings/",
-      "levels": {
-        "Level1": {},
-        "Test": {}
-      }
+      "levelroot": "res://Assets/Scenes/Levels/Beginnings/"
     }
   }
 }

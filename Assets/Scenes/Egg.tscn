@@ -13,7 +13,7 @@ points = PoolVector3Array( -1.36554, -1.93858, 0.0045197, -1.2744, -2.01045, -0.
 [node name="Egg" type="Spatial"]
 
 [node name="Egg" type="RigidBody" parent="."]
-mass = 20.0
+mass = 14.0
 script = ExtResource( 1 )
 
 [node name="InteractionCollider" type="Area" parent="Egg"]
