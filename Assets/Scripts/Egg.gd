@@ -15,6 +15,8 @@ export var MOUSE_SENSITIVITY = 1.0
 export var TOUCH_SENSITIVITY = 0.7
 export var KB_VECTOR_MODIFIER = 80
 onready var timercounter = get_tree().get_nodes_in_group("HUD")[0].get_node("TimerCounter")
+onready var world = get_node("/root/World")
+onready var globalvars = get_node("/root/Global/Vars")
 
 signal reset_level
 signal reset_timer
@@ -56,22 +58,27 @@ func _physics_process(delta):
 			
 	elif last_hurrah:
 		if Input.is_action_pressed("ui_accept") or Input.is_mouse_button_pressed(1):
-			emit_signal("reset_timer")
-			emit_signal("update_collect")
-			set_global_transform(_initial_position)
-			sleeping = true
-			$EggWhole.visible = true
-			mode = RigidBody.MODE_RIGID
-			$CollisionShape.disabled = false
-			last_hurrah = false
-			get_node("/root/Global/Vars").collected = 0
-			get_node("/root/Global/Vars").collectibles = 0
-			emit_signal("reset_level")
-			splitegg.queue_free()
-			timercounter.stop = false
+			_reset_level()
+
 		
 	# Automatische bewegingsmodus:
 	#	add_central_force(-camera.get_global_transform().basis.z * 100)
+
+func _reset_level():
+	if splitegg != null:
+		splitegg.queue_free()
+	emit_signal("reset_timer")
+	set_global_transform(_initial_position)
+	sleeping = true
+	$EggWhole.visible = true
+	mode = RigidBody.MODE_RIGID
+	$CollisionShape.disabled = false
+	last_hurrah = false
+	get_node("/root/Global/Vars").collected = 0
+	get_node("/root/Global/Vars").collectibles = 0
+	emit_signal("update_collect")
+	emit_signal("reset_level")
+	timercounter.stop = false
 
 func process_input(_delta):
 
@@ -90,6 +97,17 @@ func process_input(_delta):
 		add_central_force(-camera.get_global_transform().basis.x * KB_VECTOR_MODIFIER)
 	if Input.is_action_pressed("movement_right"):
 		add_central_force(camera.get_global_transform().basis.x * KB_VECTOR_MODIFIER)
+		
+	if Input.is_action_just_released("next_level"):
+		globalvars.levelindex += 1
+		if globalvars.levelindex > (globalvars.levels.size() - 1):
+			pass
+		else:
+			world.current_level = (globalvars.levelroot + globalvars.levels[globalvars.levelindex])
+			# Laad volgende level
+			emit_signal("reset_level")
+			# Zet ei en collector op originele staat
+			_reset_level()
 	
 	# Muis vastpakken
 	
