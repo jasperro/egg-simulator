@@ -86,7 +86,7 @@ next_level={
 
 [locale]
 
-translations=PoolStringArray( "res://Assets/Localisation/translations.en.translation", "res://Assets/Localisation/translations.nl.translation" )
+translations=PoolStringArray( "res://Assets/Localisation/translations.en.translation", "res://Assets/Localisation/translations.nl.translation", "res://Assets/Localisation/translations.pl.translation" )
 
 [physics]
 

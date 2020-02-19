@@ -1,21 +1,21 @@
-,nl,en
-i18n_TITLE,Eisimulator,Egg simulator
-i18n_PLAY,"Speel","Play"
-i18n_SETTINGS,Instellingen,Settings
-i18n_BACK,Terug,Back
-i18n_NEXT,Volgende,Next
-i18n_EXITTOMENU,Verlaat naar menu,Exit to menu
-i18n_SKIP,Overslaan,Skip
-i18n_UNPAUSE,Verder spelen,Unpause
-i18n_PAUSED,Spel gepauzeerd,Paused game
-i18n_EXIT,Sluit spel af,Exit game
-i18n_SAVE,Opslaan,Save
-i18n_settings_TOUCHCONTROL,Vingerbesturing,Touch controls
-i18n_settings_LANGUAGE,Taal,Language
-i18n_LEVELSELECT,Selecteer een level,Select a level
-i18n_categorydesc_BEGINNINGS,Leer het ei kennen,Learn the ways of the egg
-i18n_categorydesc_TRAMPOLINES,Gebruik trampolines om te springen,Use trampolines to jump
-i18n_hud_COLLECTED,verzameld,Collected
-i18n_hud_ITEM,objecten,item
-i18n_hud_ITEMS,objecten,items
-i18n_hud_OF,van de,of
+,nl,en,pl
+i18n_TITLE,Eisimulator,Egg simulator,Simulator Jaj
+i18n_PLAY,"Speel","Play",Graj
+i18n_SETTINGS,Instellingen,Settings,Configuracja
+i18n_BACK,Terug,Back,Ćofnij
+i18n_NEXT,Volgende,Next,Dalej
+i18n_EXITTOMENU,Verlaat naar menu,Exit to menu,Wróć do menu
+i18n_SKIP,Overslaan,Skip,Pominąć
+i18n_UNPAUSE,Verder spelen,Unpause,Dalej
+i18n_PAUSED,Spel gepauzeerd,Paused game,Gra wstrzymana
+i18n_EXIT,Sluit spel af,Exit game,Zakończ grę
+i18n_SAVE,Opslaan,Save,Zapisz
+i18n_settings_TOUCHCONTROL,Vingerbesturing,Touch controls,Sterowanie dotykowe
+i18n_settings_LANGUAGE,Taal,Language,Język
+i18n_LEVELSELECT,Selecteer een level,Select a level,Wybierz poziom
+i18n_categorydesc_BEGINNINGS,Leer het ei kennen,Learn the ways of the egg,"Naucz się, jak działa jajko"
+i18n_categorydesc_TRAMPOLINES,Gebruik trampolines om te springen,Use trampolines to jump,Skacz z trampolinami
+i18n_hud_COLLECTED,verzameld,Collected,Zebrane
+i18n_hud_ITEM,objecten,item,objekt
+i18n_hud_ITEMS,objecten,items,objekty
+i18n_hud_OF,van de,of,z
