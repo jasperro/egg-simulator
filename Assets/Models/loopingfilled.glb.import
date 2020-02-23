@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/egg.dae-5d147bfb6ac3d65b02332ab6224da5b5.scn"
+path="res://.import/loopingfilled.glb-4bb230d27d83795e1f363268d20a62ff.scn"
 
 [deps]
 
-source_file="res://Assets/Models/egg.dae"
-dest_files=[ "res://.import/egg.dae-5d147bfb6ac3d65b02332ab6224da5b5.scn" ]
+source_file="res://Assets/Models/loopingfilled.glb"
+dest_files=[ "res://.import/loopingfilled.glb-4bb230d27d83795e1f363268d20a62ff.scn" ]
 
 [params]
 

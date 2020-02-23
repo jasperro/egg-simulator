@@ -1,9 +1,6 @@
 extends Control
 
-var world
-
-func _ready():
-	world = load("res://Assets/Scenes/World.tscn")
+onready var world := preload("res://Assets/Scenes/World.tscn")
 
 func _load_level(scene):
 	var level = get_node(".")

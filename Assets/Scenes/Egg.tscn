@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Scripts/Egg.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Models/egg.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Models/egg.glb" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scripts/CameraEgg.gd" type="Script" id=3]
 
 [sub_resource type="SphereShape" id=1]
@@ -24,9 +24,7 @@ collision_mask = 97
 [node name="CollisionShape" type="CollisionShape" parent="Egg/InteractionCollider"]
 shape = SubResource( 1 )
 
-[node name="EggWhole" type="MeshInstance" parent="Egg"]
-mesh = ExtResource( 2 )
-material/0 = null
+[node name="EggWhole" parent="Egg" instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="Egg"]
 shape = SubResource( 2 )

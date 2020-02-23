@@ -1,8 +1,8 @@
 extends Label
 
-var startticks
-var leveltime
-var stop = false
+var startticks := 0
+var leveltime := 0
+var stop := false
 
 func _ready():
 	_reset()

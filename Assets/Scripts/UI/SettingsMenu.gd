@@ -1,25 +1,33 @@
 extends Control
 
+var _language_indexes := {} # Dict voor taalcodes
+onready var global := get_node("/root/Global")
+
 func _on_BackButton_pressed():
 	get_tree().change_scene_to(load("res://Assets/UI/MainMenu.tscn"))
 	get_tree().get_root().remove_child(get_node("."))
 
-var _language_indexes = {}
-onready var global = get_node("/root/Global")
+func _on_SaveButton_pressed():
+	global._save_settings()
 
 func _ready():
 	global._load_settings()
 	_load_settings()
-	
+
+# Functie om waarde uit de settings te krijgen
 func _get_config_value(section, option):
 	return global._get_config_value(section, option)
 
+# Anders dan global.load_settings die de settings laadt,
+# stelt deze functie de knopwaarden in.
 func _load_settings():
 	for button in get_tree().get_nodes_in_group("Buttons"):
+		# Check voor knoptypes
 		if button is CheckButton:
 			button.connect("toggled", self, "_on_" + button.name + "_toggled", [button])
 		elif button is OptionButton:
 			button.connect("item_selected", self, "_on_" + button.name + "_item_selected", [button])
+
 		match button.name:
 			"Vsync":
 				button.set_pressed(_get_config_value("Video","Vsync"))
@@ -41,10 +49,8 @@ func _load_settings():
 					elif language == "nl":
 						button.select(_language_indexes["nl"])
 
-func _on_SaveButton_pressed():
-	global._save_settings()
+# Functies voor waardeverandering knoppen
 
-# Button signal methods
 func _on_Vsync_toggled(button_pressed, _button):
 	global._settings["Video"]["Vsync"] = button_pressed
 

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/splitegg.dae-74c3f0c0221f4a94e45fe3295ddba63c.scn"
+path="res://.import/egg.glb-5669ed8e59a5d444259a791a6eff9a56.scn"
 
 [deps]
 
-source_file="res://Assets/Models/splitegg.dae"
-dest_files=[ "res://.import/splitegg.dae-74c3f0c0221f4a94e45fe3295ddba63c.scn" ]
+source_file="res://Assets/Models/egg.glb"
+dest_files=[ "res://.import/egg.glb-5669ed8e59a5d444259a791a6eff9a56.scn" ]
 
 [params]
 

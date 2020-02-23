@@ -1,7 +1,7 @@
 extends StaticBody
 
-export var platformcoloroverride = false
-export(Color) var platformcolor = "#ff0000"
+export var platformcoloroverride := false
+export(Color) var platformcolor := Color(1,0,0,1)
 
 func _enter_tree():
 	if platformcoloroverride == true:

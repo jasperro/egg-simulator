@@ -2,10 +2,11 @@ extends Node
 
 var current_instance
 var current_level
-onready var HUD := preload("res://Assets/UI/HUD.tscn")
-onready var egg := preload("res://Assets/Scenes/Egg.tscn")
 var current_HUD
 var current_egg
+
+onready var HUD := preload("res://Assets/UI/HUD.tscn")
+onready var egg := preload("res://Assets/Scenes/Egg.tscn")
 
 func _load_level(path):
 	current_egg = egg.instance()

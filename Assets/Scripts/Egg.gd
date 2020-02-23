@@ -1,14 +1,14 @@
 extends RigidBody
 
-# Camera en rotatiebron, zodat de camera niet apart berekend hoeft te worden
-var camera
-var rotator_node
+# Camera en rotatiebron
+onready var camera = get_node("Rotator/Camera")
+onready var rotator_node = get_node("Rotator")
+
 var splitegg
-# Variabele wanneer ei gebroken is
-var last_hurrah = false
+var last_hurrah := false
 # Positie van ei in het begin, standaard y=50
-var _initial_position
-var hud_node
+onready var _initial_position = get_global_transform()
+onready var hud_node = get_tree().get_nodes_in_group("HUD")[0]
 
 # Sensitiviteiten
 export var MOUSE_SENSITIVITY = 1.0
@@ -25,14 +25,8 @@ signal level_won
 
 func _ready():
 	
-	# Camera en rotatiebron instellen
-	camera = get_node("Rotator/Camera")
-	rotator_node = get_node("Rotator")
-	
 	# Muis onzichtbaar maken
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	_initial_position = get_global_transform()
-	hud_node = get_tree().get_nodes_in_group("HUD")[0]
 
 	connect("reset_level", get_node("/root/World"), "_reset_level")
 	connect("reset_timer", timercounter, "_reset")
@@ -44,12 +38,15 @@ func _physics_process(delta):
 	process_input(delta)
 	if !last_hurrah:
 		if translation.y < -45:
+			# Start last_hurrah
 			timercounter.stop = true
 			last_hurrah = true
 			$EggWhole.visible = false
 			$CollisionShape.disabled = true
+			
+			# Kapot ei genereren
 			splitegg = load("res://Assets/Models/Scenes/SplitEgg.tscn").instance()
-			get_node("..").add_child(splitegg)
+			$"..".add_child(splitegg)
 			splitegg.set_transform(get_transform())
 			splitegg.get_node("EggTop").set_linear_velocity(get_linear_velocity())
 			splitegg.get_node("EggBottom").set_linear_velocity(get_linear_velocity())
@@ -73,7 +70,6 @@ func _reset_level():
 	last_hurrah = false
 	get_node("/root/Global/Vars").collected = 0
 	get_node("/root/Global/Vars").collectibles = 0
-	emit_signal("update_collect")
 	emit_signal("reset_level")
 
 func process_input(_delta):

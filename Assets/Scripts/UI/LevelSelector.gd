@@ -4,9 +4,24 @@ var world
 var leveldata
 var levelroot
 var levels
-onready var levelcontainer_ps=preload("res://Assets/UI/LevelContainer.tscn")
-onready var global=get_node("/root/Global")
-onready var globalvars=get_node("/root/Global/Vars")
+
+onready var levelcontainer_ps := preload("res://Assets/UI/LevelContainer.tscn")
+onready var global := get_node("/root/Global")
+onready var globalvars := get_node("/root/Global/Vars")
+
+# Sorteer array op alfabet, beter als globale functie?
+func _alphasort(a, b):
+	if typeof(a) != typeof(b):
+		return typeof(a) < typeof(b)
+	else:
+		return a < b
+func _on_BackButton_pressed():
+	if $LevelContainer:
+		$CategoryContainer.visible = true
+		remove_child($LevelContainer)
+	else:
+		get_tree().change_scene_to(load("res://Assets/UI/MainMenu.tscn"))
+		get_tree().get_root().remove_child(get_node("."))
 
 func _ready():
 	# Laad wereld-scene
@@ -55,19 +70,6 @@ func _level_button_pressed(scene, iter):
 	globalvars.levels = levels
 	_load_level(scene)
 
-# Sorteer array
-func _alphasort(a, b):
-	if typeof(a) != typeof(b):
-		return typeof(a) < typeof(b)
-	else:
-		return a < b
-func _on_BackButton_pressed():
-	if $LevelContainer:
-		$CategoryContainer.visible = true
-		remove_child($LevelContainer)
-	else:
-		get_tree().change_scene_to(load("res://Assets/UI/MainMenu.tscn"))
-		get_tree().get_root().remove_child(get_node("."))
 func _load_level(scene):
 	var level = get_node(".")
 	var next_level = world.instance()

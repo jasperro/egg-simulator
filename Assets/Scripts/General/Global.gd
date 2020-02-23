@@ -1,6 +1,6 @@
 extends Node
 
-var _default_settings = {
+var _default_settings := {
 	"Video": {
 		"Vsync": ProjectSettings.get_setting("display/window/vsync/use_vsync"),
 		"BackgroundColor": ProjectSettings.get_setting("rendering/environment/default_clear_color")
@@ -13,8 +13,9 @@ var _default_settings = {
 	}
 }
 var _settings = _default_settings
-var _config_file = ConfigFile.new()
-const SETTINGS_PATH = "user://settings.cfg"
+var _config_file := ConfigFile.new()
+const SETTINGS_PATH := "user://settings.cfg"
+onready var globalvars := $Vars
 
 func _ready():
 	_load_settings()
