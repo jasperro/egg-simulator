@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Scripts/UI/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scripts/UI/CollectCounter.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Textures/UI/PauseButtonInactive.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/UI/PauseButtonActive.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Scripts/UI/TimerCounter.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Scripts/UI/win_popup.gd" type="Script" id=7]
 
 [node name="HUD" type="Control" groups=[
 "HUD",
@@ -124,6 +125,44 @@ scale = Vector2( 8, 8 )
 normal = ExtResource( 4 )
 pressed = ExtResource( 5 )
 visibility_mode = 1
+
+[node name="win_popup" type="PopupPanel" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 200.0
+margin_top = 100.0
+margin_right = -200.0
+margin_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="VBoxContainer" parent="win_popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+grow_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="win_popup/ItemList"]
+margin_right = 608.0
+margin_bottom = 52.0
+text = "You Won!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="pause_popup/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
 [connection signal="pressed" from="pause_popup/VBoxContainer/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="pause_popup/VBoxContainer/quit" to="." method="_on_quit_pressed"]

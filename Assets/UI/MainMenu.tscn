@@ -24,28 +24,28 @@ __meta__ = {
 }
 
 [node name="MenuButtons" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 359.0
-margin_top = 210.0
-margin_right = 664.0
-margin_bottom = 389.0
+margin_left = 374.0
+margin_top = 218.0
+margin_right = 649.0
+margin_bottom = 382.0
 grow_horizontal = 2
 alignment = 1
 
 [node name="StartButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_right = 305.0
-margin_bottom = 57.0
+margin_right = 275.0
+margin_bottom = 52.0
 text = "i18n_PLAY"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 61.0
-margin_right = 305.0
-margin_bottom = 118.0
+margin_top = 56.0
+margin_right = 275.0
+margin_bottom = 108.0
 text = "i18n_SETTINGS"
 
 [node name="ExitButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 122.0
-margin_right = 305.0
-margin_bottom = 179.0
+margin_top = 112.0
+margin_right = 275.0
+margin_bottom = 164.0
 text = "i18n_EXIT"
 
 [node name="Banner" type="Label" parent="."]

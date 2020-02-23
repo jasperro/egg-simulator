@@ -5,6 +5,8 @@ var collected = 0
 var collectibles = 0
 var wordorder = 0
 
+signal level_won
+
 func _enter_tree():
 	if TranslationServer.get_locale().find("nl") != -1:
 		wordorder = 1
@@ -23,6 +25,6 @@ func _update_collect():
 		+ collectedgrammar + " " + tr("i18n_hud_OF") + " " + str(get_node("/root/Global/Vars").collectibles))
 	
 	if get_node("/root/Global/Vars").collected == get_node("/root/Global/Vars").collectibles:
-		set_text("Eggcellent!")
-		# next_level() -- functie in Global, in World of self?
-		# Winscherm?
+		# Trigger winscherm
+		connect("level_won", get_node("/root/World/Egg/Egg"), "_level_won")
+		emit_signal("level_won")

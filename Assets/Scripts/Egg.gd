@@ -15,11 +15,13 @@ export var MOUSE_SENSITIVITY = 1.0
 export var TOUCH_SENSITIVITY = 0.7
 export var KB_VECTOR_MODIFIER = 80
 onready var timercounter = get_tree().get_nodes_in_group("HUD")[0].get_node("TimerCounter")
+onready var win_popup = get_tree().get_nodes_in_group("HUD")[0].get_node("win_popup")
 onready var world = get_node("/root/World")
 onready var globalvars = get_node("/root/Global/Vars")
 
 signal reset_level
 signal reset_timer
+signal level_won
 
 func _ready():
 	
@@ -34,6 +36,7 @@ func _ready():
 
 	connect("reset_level", get_node("/root/World"), "_reset_level")
 	connect("reset_timer", timercounter, "_reset")
+	connect("level_won", win_popup, "_level_won")
 
 func _physics_process(delta):
 	
@@ -67,18 +70,11 @@ func _physics_process(delta):
 func _reset_level():
 	if splitegg != null:
 		splitegg.queue_free()
-	emit_signal("reset_timer")
-	set_global_transform(_initial_position)
-	sleeping = true
-	$EggWhole.visible = true
-	mode = RigidBody.MODE_RIGID
-	$CollisionShape.disabled = false
 	last_hurrah = false
 	get_node("/root/Global/Vars").collected = 0
 	get_node("/root/Global/Vars").collectibles = 0
 	emit_signal("update_collect")
 	emit_signal("reset_level")
-	timercounter.stop = false
 
 func process_input(_delta):
 
@@ -105,8 +101,6 @@ func process_input(_delta):
 		else:
 			world.current_level = (globalvars.levelroot + globalvars.levels[globalvars.levelindex])
 			# Laad volgende level
-			emit_signal("reset_level")
-			# Zet ei en collector op originele staat
 			_reset_level()
 	
 	# Muis vastpakken
@@ -114,6 +108,8 @@ func process_input(_delta):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _level_won():
+	emit_signal("level_won")
 # Muis camera
 func _input(event):
 	if event is InputEventScreenDrag:

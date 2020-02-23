@@ -3,5 +3,5 @@
 [ext_resource path="res://Assets/Fonts/Inter-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 40
+size = 36
 font_data = ExtResource( 1 )
