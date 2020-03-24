@@ -19,3 +19,6 @@ i18n_hud_COLLECTED,verzameld,Collected,Zebrane
 i18n_hud_ITEM,objecten,item,objekt
 i18n_hud_ITEMS,objecten,items,objekty
 i18n_hud_OF,van de,of,z
+i18n_time,Tijd,Time,Czas
+i18n_wintext,Je hebt gewonnnen!,You won!,Wygrane!
+i18n_nextlevel,Volgend Level,Next Level,Nastepny Poziom

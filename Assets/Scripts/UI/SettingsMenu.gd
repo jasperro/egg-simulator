@@ -48,6 +48,8 @@ func _load_settings():
 						button.select(_language_indexes["en"])
 					elif language == "nl":
 						button.select(_language_indexes["nl"])
+					elif language == "pl":
+						button.select(_language_indexes["pl"])
 
 # Functies voor waardeverandering knoppen
 

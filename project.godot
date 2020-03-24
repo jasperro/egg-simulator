@@ -92,6 +92,9 @@ boost={
 [locale]
 
 translations=PoolStringArray( "res://Assets/Localisation/translations.en.translation", "res://Assets/Localisation/translations.nl.translation", "res://Assets/Localisation/translations.pl.translation" )
+translation_remaps={
+"res://Assets/Textures/UI/Title.png": PoolStringArray( "res://Assets/Textures/UI/Title-nl.png:nl", "res://Assets/Textures/UI/Title-pl.png:pl" )
+}
 
 [physics]
 

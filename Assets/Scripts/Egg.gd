@@ -90,14 +90,14 @@ func process_input(_delta):
 	if Input.is_action_pressed("movement_right"):
 		add_central_force(camera.get_global_transform().basis.x * KB_VECTOR_MODIFIER)
 		
-	if Input.is_action_just_released("next_level"):
-		globalvars.levelindex += 1
-		if globalvars.levelindex > (globalvars.levels.size() - 1):
-			pass
-		else:
-			world.current_level = (globalvars.levelroot + globalvars.levels[globalvars.levelindex])
+func _next_level():
+	globalvars.levelindex += 1
+	if globalvars.levelindex > (globalvars.levels.size() - 1):
+		pass
+	else:
+		world.current_level = (globalvars.levelroot + globalvars.levels[globalvars.levelindex])
 			# Laad volgende level
-			_reset_level()
+		_reset_level()
 	
 	# Muis vastpakken
 	
