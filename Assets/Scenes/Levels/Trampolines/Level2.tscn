@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Scenes/Platforms.tscn" type="PackedScene" id=4]
 
 [node name="Level" type="Spatial"]
+
 [node name="Start" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282645, 50, 0 )
 
@@ -15,16 +16,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282645, 50, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.9884, 14 )
 
 [node name="Collectible2" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96763, 37.96, 14.3787 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.168, 36.9766 )
 
 [node name="Collectible3" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5214, 35.9668, 27.3091 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69759, 51.3049, 37.3226 )
 
 [node name="Collectible4" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.2993, 17.2101, 25.5585 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4346, 17.2101, 25.5585 )
+
+[node name="Collectible6" parent="Collectibles" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4893, 6.73062, 25.5585 )
 
 [node name="Collectible5" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1625, 21.5982, 38.5737 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5405, 47.348, 31.6851 )
 
 [node name="Platforms" parent="." instance=ExtResource( 4 )]
 platformcolor = Color( 0.0901961, 0.941176, 0.305882, 1 )
@@ -33,19 +37,25 @@ platformcolor = Color( 0.0901961, 0.941176, 0.305882, 1 )
 transform = Transform( 1, 0, 0, 0, 0.707107, -1.41421, 0, 0.707107, 1.41421, 0, 40, 4 )
 
 [node name="Platform2" parent="Platforms" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.866026, 0.999997, 0, -0.5, 1.73205, -40, 20, 42 )
-
-[node name="Platform3" parent="Platforms" instance=ExtResource( 2 )]
-transform = Transform( -1.62921e-07, 0.5, 1.73205, 0, 0.866026, -0.999997, -1, -8.14604e-08, -2.82186e-07, -34.6579, 10, 25.6966 )
+transform = Transform( -3.25841e-07, 0.5, 2.59808, 0, 0.866026, -1.5, -2, -8.14603e-08, -4.2328e-07, -39.4287, 10, 27.7188 )
 
 [node name="TrampolinePlatform1" parent="Platforms" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 30.9593, 21.9072 )
 
 [node name="TrampolinePlatform2" parent="Platforms" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 46.2595, 30.299 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 40.5577, 30.299 )
 
 [node name="TrampolinePlatform3" parent="Platforms" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 56.4482, 0 )
+transform = Transform( 0.893269, -0.449522, 0, 0.449522, 0.893269, 0, 0, 0, 1.5, 0, 57.2483, 33.2373 )
+
+[node name="TrampolinePlatform6" parent="Platforms" instance=ExtResource( 3 )]
+transform = Transform( 0.893269, -0.449522, 0, 0.449522, 0.893269, 0, 0, 0, 0.5, 0, 57.2483, 14.8424 )
 
 [node name="TrampolinePlatform4" parent="Platforms" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 50, -23.2002 )
+transform = Transform( -0.898794, 0.438371, -1.31134e-07, 0.438371, 0.898794, 0, 7.85751e-08, -3.83236e-08, -1.5, -9.71185, 49.981, 19.0742 )
+
+[node name="TrampolinePlatform7" parent="Platforms" instance=ExtResource( 3 )]
+transform = Transform( -0.898794, 0.438371, -4.37114e-08, 0.438371, 0.898794, 0, 7.85751e-08, -3.83236e-08, -0.5, -9.71185, 49.981, 37.4692 )
+
+[node name="TrampolinePlatform8" parent="Platforms" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 2, 0, 1, 0, -1, 0, -3.25841e-07, -30, 10, 31.6045 )
