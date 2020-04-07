@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Assets/Scripts/General/World.gd" type="Script" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
-[ext_resource path="res://Assets/Textures/Floor.shader" type="Shader" id=5]
+[ext_resource path="res://Assets/Shaders/Floor.shader" type="Shader" id=5]
+
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 2000, 2000 )

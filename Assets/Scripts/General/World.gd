@@ -16,6 +16,7 @@ func _load_level(path):
 	add_child(current_HUD)
 	add_child(current_egg)
 	add_child(current_instance)
+	current_egg.global_transform = current_instance.get_node("Start").global_transform
 	
 func _reset_level():
 	remove_child(current_egg)

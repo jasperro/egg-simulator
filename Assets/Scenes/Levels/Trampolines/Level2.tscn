@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/Scenes/Platforms.tscn" type="PackedScene" id=4]
 
 [node name="Level" type="Spatial"]
+[node name="Start" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282645, 50, 0 )
 
 [node name="Collectibles" type="Spatial" parent="."]
 

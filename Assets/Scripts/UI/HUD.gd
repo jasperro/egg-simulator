@@ -1,5 +1,10 @@
 extends Control
 
+signal reset_level
+
+func _ready():
+	connect("reset_level", get_node("/root/World").current_egg.get_node("Egg"), "_reset_level")
+
 func _on_unpause_pressed():
 	get_node("pause_popup").hide()
 	get_tree().set_pause(false)
@@ -29,3 +34,7 @@ func _on_menu_pressed():
 
 func _on_PauseButton_pressed():
 	_pause_game()
+
+func _on_restart_pressed():
+	_on_unpause_pressed()
+	emit_signal("reset_level")

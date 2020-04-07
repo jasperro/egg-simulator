@@ -1,10 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Scripts/UI/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/UI/Title.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Move"
+resource_name = "colorloop"
+length = 10.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:color:h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10 )
+}
+
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -42,7 +56,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="HBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.48, 0.1344, 0.1344, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+autoplay = "colorloop"
+anims/colorloop = SubResource( 1 )
+
+[node name="MenuItems" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -64.0
@@ -55,7 +81,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="CenterContainer" parent="CenterContainer"]
+[node name="Logo" type="CenterContainer" parent="MenuItems"]
 margin_right = 681.0
 margin_bottom = 600.0
 grow_horizontal = 2
@@ -66,49 +92,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Banner" type="TextureRect" parent="CenterContainer/Logo"]
+[node name="Banner" type="TextureRect" parent="MenuItems/Logo"]
 margin_left = 308.0
 margin_top = 284.0
 margin_right = 372.0
 margin_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_rotation = -8.41335
-rect_scale = Vector2( 5.39283, 5.39283 )
 rect_pivot_offset = Vector2( 32, 16 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Logo/Banner"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuItems/Logo/Banner"]
 autoplay = "Move"
-anims/Move = SubResource( 1 )
+anims/Move = SubResource( 2 )
 
-[node name="MenuButtons" type="VBoxContainer" parent="CenterContainer"]
+[node name="MenuButtons" type="VBoxContainer" parent="MenuItems"]
 margin_left = 685.0
 margin_right = 960.0
 margin_bottom = 600.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="StartButton" type="Button" parent="CenterContainer/MenuButtons"]
+[node name="StartButton" type="Button" parent="MenuItems/MenuButtons"]
 margin_top = 218.0
 margin_right = 275.0
 margin_bottom = 270.0
+focus_neighbour_right = NodePath("../SettingsButton")
 text = "i18n_PLAY"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/MenuButtons"]
+[node name="SettingsButton" type="Button" parent="MenuItems/MenuButtons"]
 margin_top = 274.0
 margin_right = 275.0
 margin_bottom = 326.0
+focus_neighbour_left = NodePath("../StartButton")
+focus_neighbour_right = NodePath("../ExitButton")
 text = "i18n_SETTINGS"
 
-[node name="ExitButton" type="Button" parent="CenterContainer/MenuButtons"]
+[node name="ExitButton" type="Button" parent="MenuItems/MenuButtons"]
 margin_top = 330.0
 margin_right = 275.0
 margin_bottom = 382.0
+focus_neighbour_left = NodePath("../SettingsButton")
 text = "i18n_EXIT"
-[connection signal="pressed" from="CenterContainer/MenuButtons/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="CenterContainer/MenuButtons/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/ExitButton" to="." method="_on_ExitButton_pressed"]

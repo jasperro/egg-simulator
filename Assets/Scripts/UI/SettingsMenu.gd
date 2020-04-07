@@ -11,6 +11,7 @@ func _on_SaveButton_pressed():
 	global._save_settings()
 
 func _ready():
+	find_node("BackButton").grab_focus()
 	global._load_settings()
 	_load_settings()
 
