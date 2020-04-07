@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Scripts/UI/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/UI/Title.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Move"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -10.0, 10.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 5 ), Vector2( 7, 7 ), Vector2( 5, 5 ), Vector2( 7, 7 ), Vector2( 5, 5 ) ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -13,9 +42,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="CenterContainer" parent="CenterContainer"]
+margin_right = 681.0
+margin_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -24,48 +66,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButtons" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 374.0
-margin_top = 218.0
-margin_right = 649.0
-margin_bottom = 382.0
-grow_horizontal = 2
-alignment = 1
-
-[node name="StartButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_right = 275.0
-margin_bottom = 52.0
-text = "i18n_PLAY"
-
-[node name="SettingsButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 56.0
-margin_right = 275.0
-margin_bottom = 108.0
-text = "i18n_SETTINGS"
-
-[node name="ExitButton" type="Button" parent="CenterContainer/MenuButtons"]
-margin_top = 112.0
-margin_right = 275.0
-margin_bottom = 164.0
-text = "i18n_EXIT"
-
-[node name="Container" type="Control" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_top = 170.0
-margin_right = 20.0
-margin_bottom = 40.0
+[node name="Banner" type="TextureRect" parent="CenterContainer/Logo"]
+margin_left = 308.0
+margin_top = 284.0
+margin_right = 372.0
+margin_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_rotation = -8.41335
+rect_scale = Vector2( 5.39283, 5.39283 )
+rect_pivot_offset = Vector2( 32, 16 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Banner" type="Sprite" parent="Container"]
-position = Vector2( 20, 0 )
-scale = Vector2( 5, 5 )
-texture = ExtResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Logo/Banner"]
+autoplay = "Move"
+anims/Move = SubResource( 1 )
+
+[node name="MenuButtons" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 685.0
+margin_right = 960.0
+margin_bottom = 600.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer/MenuButtons"]
+margin_top = 218.0
+margin_right = 275.0
+margin_bottom = 270.0
+text = "i18n_PLAY"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/MenuButtons"]
+margin_top = 274.0
+margin_right = 275.0
+margin_bottom = 326.0
+text = "i18n_SETTINGS"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/MenuButtons"]
+margin_top = 330.0
+margin_right = 275.0
+margin_bottom = 382.0
+text = "i18n_EXIT"
 [connection signal="pressed" from="CenterContainer/MenuButtons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/MenuButtons/ExitButton" to="." method="_on_ExitButton_pressed"]

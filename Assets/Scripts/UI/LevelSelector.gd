@@ -50,6 +50,15 @@ func _category_button_pressed(button):
 	add_child(levelcontainer)
 	var LevelSelector = $LevelContainer/LevelSelector
 	
+	var file = File.new()
+	if !file.file_exists("user://stats.json"):
+		file.open("user://stats.json", File.WRITE)
+		file.store_line("{}")
+		file.close()
+	file.open("user://stats.json", File.READ)
+	var statsdata = parse_json(file.get_as_text())
+	print(statsdata)
+	
 	for i in leveldata["categories"]:
 		if leveldata["categories"][i]["button"] == button:
 			if leveldata["categories"][i].has("levelroot"):
@@ -57,9 +66,16 @@ func _category_button_pressed(button):
 				levels = global._list_files_in_directory(leveldata["categories"][i]["levelroot"])
 				levels.sort_custom(self, "_alphasort")
 				for e in levels:
+					var e_relative = (leveldata["categories"][i]["levelroot"] + e
+					).replace("res://Assets/Scenes/Levels/", "")
 					iter+=1
 					var newbutton = Button.new()
-					newbutton.set_text(str(e) + " - " + str(iter))
+					if statsdata.has(e_relative) && statsdata[e_relative].has("time"):
+						newbutton.set_text(str(iter) +
+						" - " + str(stepify((float(
+						statsdata[e_relative]["time"])/1000),0.1)) + "s")
+					else:
+						newbutton.set_text(str(iter))
 					LevelSelector.add_child(newbutton)
 					newbutton.connect("pressed", self, "_level_button_pressed", [leveldata["categories"][i]["levelroot"] + e, iter - 1])
 
