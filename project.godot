@@ -17,10 +17,14 @@ _global_script_class_icons={
 
 config/name="Egg Simulator"
 run/main_scene="res://Assets/UI/MainMenu.tscn"
+boot_splash/image="res://Assets/Textures/UI/MouseCursor64.png"
+boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.0862745, 0.545098, 0.992157, 1 )
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 config/name_en="Egg Simulator"
 config/name_nl="Eisimulator"
+config/name_pl="Simulator Jaj"
 
 [autoload]
 
