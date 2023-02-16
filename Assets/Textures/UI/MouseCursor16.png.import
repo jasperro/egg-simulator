@@ -1,8 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/MouseCursor16.png-f6c45a9e6fac095ddb48c2ede75b8115.stex"
+type="CompressedTexture2D"
+uid="uid://d52klclg0cgj"
+path="res://.godot/imported/MouseCursor16.png-f6c45a9e6fac095ddb48c2ede75b8115.ctex"
 metadata={
 "vram_texture": false
 }
@@ -10,25 +11,24 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/UI/MouseCursor16.png"
-dest_files=[ "res://.import/MouseCursor16.png-f6c45a9e6fac095ddb48c2ede75b8115.stex" ]
+dest_files=["res://.godot/imported/MouseCursor16.png-f6c45a9e6fac095ddb48c2ede75b8115.ctex"]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=false
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

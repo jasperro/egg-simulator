@@ -5,9 +5,9 @@ var leveldata
 var levelroot
 var levels
 
-onready var levelcontainer_ps := preload("res://Assets/UI/LevelContainer.tscn")
-onready var global := get_node("/root/Global")
-onready var globalvars := get_node("/root/Global/Vars")
+@onready var levelcontainer_ps := preload("res://Assets/UI/LevelContainer.tscn")
+@onready var global := get_node("/root/Global")
+@onready var globalvars := get_node("/root/Global/Vars")
 
 # Sorteer array op alfabet, beter als globale functie?
 func _alphasort(a, b):
@@ -15,12 +15,13 @@ func _alphasort(a, b):
 		return typeof(a) < typeof(b)
 	else:
 		return a < b
+
 func _on_BackButton_pressed():
 	if $LevelContainer:
 		$CategoryContainer.visible = true
 		remove_child($LevelContainer)
 	else:
-		get_tree().change_scene_to(load("res://Assets/UI/MainMenu.tscn"))
+		get_tree().change_scene_to_file("res://Assets/UI/MainMenu.tscn")
 		get_tree().get_root().remove_child(get_node("."))
 
 func _ready():
@@ -28,9 +29,8 @@ func _ready():
 	world = load("res://Assets/Scenes/World.tscn")
 	
 	# Open bestand met levelcategoriën
-	var file = File.new()
-	file.open("res://Assets/Data/levels.json", File.READ)
-	leveldata = parse_json(file.get_as_text())
+	var file = FileAccess.open("res://Assets/Data/levels.json", FileAccess.READ)
+	leveldata = JSON.parse_string(file.get_as_text())
 	var iter = 0
 	
 	# Knoppen toevoegen voor levelcategoriën
@@ -42,24 +42,23 @@ func _ready():
 		$CategoryContainer/CategorySelector.add_child(button)
 		if iter == 1:
 			button.grab_focus()
-		button.connect("pressed", self, "_category_button_pressed", [button])
+		button.pressed.connect(self._category_button_pressed.bind(button))
 		
 # Open levelselector
 func _category_button_pressed(button):
 	$CategoryContainer.visible = false
 	var iter = 0
-	var levelcontainer = levelcontainer_ps.instance()
-	add_child(levelcontainer)
+	var levelcontainer = levelcontainer_ps.instantiate()
+	$".".add_child(levelcontainer)
 	var LevelSelector = $LevelContainer/LevelSelector
 	
 	# Laad leveldata (tijden)
-	var file = File.new()
-	if !file.file_exists("user://stats.json"):
-		file.open("user://stats.json", File.WRITE)
+	if !FileAccess.file_exists("user://stats.json"):
+		var file = FileAccess.open("user://stats.json", FileAccess.WRITE)
 		file.store_line("{}")
-		file.close()
-	file.open("user://stats.json", File.READ)
-	var statsdata = parse_json(file.get_as_text())
+		file = null
+	var file = FileAccess.open("user://stats.json", FileAccess.READ)
+	var statsdata = JSON.parse_string(file.get_as_text())
 	
 	# Maak een knop voor elk level
 	for i in leveldata["categories"]:
@@ -67,7 +66,7 @@ func _category_button_pressed(button):
 			if leveldata["categories"][i].has("levelroot"):
 				levelroot = leveldata["categories"][i]["levelroot"]
 				levels = global._list_files_in_directory(leveldata["categories"][i]["levelroot"])
-				levels.sort_custom(self, "_alphasort")
+				levels.sort_custom(self._alphasort)
 				for e in levels:
 					var e_relative = (leveldata["categories"][i]["levelroot"] + e
 					).replace("res://Assets/Scenes/Levels/", "")
@@ -76,14 +75,14 @@ func _category_button_pressed(button):
 					
 					if statsdata.has(e_relative) && statsdata[e_relative].has("time"):
 						newbutton.set_text(str(iter) +
-						" - " + str(stepify((float(
+						" - " + str(snapped((float(
 						statsdata[e_relative]["time"])/1000),0.1)) + "s")
 					else:
 						newbutton.set_text(str(iter))
 					LevelSelector.add_child(newbutton)
 					if iter == 1:
 						newbutton.grab_focus()
-					newbutton.connect("pressed", self, "_level_button_pressed", [leveldata["categories"][i]["levelroot"] + e, iter - 1])
+					newbutton.pressed.connect(self._level_button_pressed.bind(leveldata["categories"][i]["levelroot"] + e, iter - 1))
 
 # Laad level
 func _level_button_pressed(scene, iter):
@@ -94,7 +93,7 @@ func _level_button_pressed(scene, iter):
 
 func _load_level(scene):
 	var level = get_node(".")
-	var next_level = world.instance()
+	var next_level = world.instantiate()
 	get_parent().add_child(next_level)
 	next_level._load_level(scene)
 	get_parent().remove_child(level)

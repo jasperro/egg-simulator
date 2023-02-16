@@ -1,4 +1,4 @@
-extends Area
+extends Area3D
 
 const VEL = 200.0
 

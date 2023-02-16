@@ -26,5 +26,5 @@ func _update_collect():
 	
 	if get_node("/root/Global/Vars").collected == get_node("/root/Global/Vars").collectibles:
 		# Trigger winscherm
-		connect("level_won", get_node("/root/World/Egg/Egg"), "_level_won")
+		level_won.connect($/root/World/Egg/Egg._level_won)
 		emit_signal("level_won")

@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 func _on_unpause_pressed():
 	get_node("../UI/pause_popup").hide()

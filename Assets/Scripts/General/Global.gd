@@ -15,7 +15,7 @@ var _default_settings := {
 var _settings = _default_settings
 var _config_file := ConfigFile.new()
 const SETTINGS_PATH := "user://settings.cfg"
-onready var globalvars := $Vars
+@onready var globalvars := $Vars
 
 func _ready():
 	_load_settings()
@@ -26,8 +26,7 @@ func _ready():
 		
 func _list_files_in_directory(path):
 	var files = []
-	var dir = Directory.new()
-	dir.open(path)
+	var dir = DirAccess.open(path)
 	dir.list_dir_begin()
 	while true:
 		var file = dir.get_next()

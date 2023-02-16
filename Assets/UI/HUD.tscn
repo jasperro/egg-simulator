@@ -1,246 +1,191 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://5sfh5acuufq0"]
 
-[ext_resource path="res://Assets/Scripts/UI/HUD.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Scripts/UI/CollectCounter.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Scripts/UI/FPSCounter.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Textures/UI/PauseButtonInactive.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Textures/UI/PauseButtonActive.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Scripts/UI/TimerCounter.gd" type="Script" id=6]
-[ext_resource path="res://Assets/Scripts/UI/win_popup.gd" type="Script" id=7]
-[ext_resource path="res://Assets/Shaders/Grey.tres" type="Shader" id=8]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/HUD.gd" id="1"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/CollectCounter.gd" id="2"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/FPSCounter.gd" id="3"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/TimerCounter.gd" id="6"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/win_popup.gd" id="7"]
+[ext_resource type="Shader" uid="uid://byl5s46iwul76" path="res://Assets/Shaders/Grey.tres" id="8"]
 
-[sub_resource type="ShaderMaterial" id=1]
-render_priority = 1
-shader = ExtResource( 8 )
-shader_param/saturation = null
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_056v2"]
+shader = ExtResource("8")
 
-[sub_resource type="NoiseTexture" id=2]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2twtu"]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="Animation_6jcy3"]
 resource_name = "fade"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:material:shader_param/saturation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 0.392292 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.392292),
 "update": 0,
-"values": [ 1.0, 0.0 ]
+"values": [1.0, 0.0]
 }
 
-[node name="HUD" type="Control" groups=[
-"HUD",
-]]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eb8a3"]
+_data = {
+"fade": SubResource("Animation_6jcy3")
+}
+
+[node name="HUD" type="Control" groups=["HUD"]]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
-[node name="grey" type="Sprite" parent="."]
+[node name="grey" type="Sprite2D" parent="."]
 visible = false
-material = SubResource( 1 )
-position = Vector2( 266.773, 299.218 )
-scale = Vector2( 504.279, 385.104 )
-texture = SubResource( 2 )
+material = SubResource("ShaderMaterial_056v2")
+position = Vector2(266.773, 299.218)
+scale = Vector2(504.279, 385.104)
+texture = SubResource("NoiseTexture2D_2twtu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="grey"]
-anims/fade = SubResource( 3 )
+libraries = {
+"": SubResource("AnimationLibrary_eb8a3")
+}
 
-[node name="pause_popup" type="PopupPanel" parent="."]
-pause_mode = 2
-self_modulate = Color( 1, 1, 1, 0.7 )
+[node name="pause_popup" type="PanelContainer" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -158.5
-margin_top = -35.0
-margin_right = 158.5
-margin_bottom = 35.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
+offset_left = -83.0
+offset_top = -83.5
+offset_right = 83.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause_popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
+[node name="Panel" type="Panel" parent="pause_popup"]
+layout_mode = 2
 
-[node name="text" type="Label" parent="pause_popup/VBoxContainer"]
-margin_right = 333.0
-margin_bottom = 52.0
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_popup/Panel"]
+layout_mode = 2
+offset_right = 154.0
+offset_bottom = 159.0
+
+[node name="text" type="Label" parent="pause_popup/Panel/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "i18n_PAUSED"
-align = 1
-autowrap = true
 
-[node name="unpause" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 56.0
-margin_right = 333.0
-margin_bottom = 108.0
-focus_neighbour_right = NodePath("../quit")
+[node name="unpause" type="Button" parent="pause_popup/Panel/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 text = "i18n_UNPAUSE"
 
-[node name="restart" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 112.0
-margin_right = 333.0
-margin_bottom = 164.0
-focus_neighbour_left = NodePath("../unpause")
+[node name="restart" type="Button" parent="pause_popup/Panel/VBoxContainer"]
+layout_mode = 2
 text = "i18n_RESTART"
 
-[node name="menu" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 168.0
-margin_right = 333.0
-margin_bottom = 220.0
-focus_neighbour_right = NodePath("../quit")
+[node name="menu" type="Button" parent="pause_popup/Panel/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 text = "i18n_EXITTOMENU"
 
-[node name="quit" type="Button" parent="pause_popup/VBoxContainer"]
-margin_top = 224.0
-margin_right = 333.0
-margin_bottom = 276.0
-focus_neighbour_left = NodePath("../unpause")
+[node name="quit" type="Button" parent="pause_popup/Panel/VBoxContainer"]
+layout_mode = 2
 text = "i18n_EXIT"
 
-[node name="win_popup" type="PopupPanel" parent="."]
-pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -174.5
-margin_top = -118.0
-margin_right = 174.5
-margin_bottom = 118.0
+[node name="win_popup" type="PanelContainer" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.428
+anchor_top = 0.396
+anchor_right = 0.572
+anchor_bottom = 0.604
+offset_left = 76.944
+offset_top = 63.392
+offset_right = -76.944
+offset_bottom = -63.392
 grow_horizontal = 2
-size_flags_horizontal = 7
-size_flags_vertical = 7
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_vertical = 2
+script = ExtResource("7")
+
+[node name="Panel" type="Panel" parent="win_popup"]
+layout_mode = 2
 
 [node name="Items" type="VBoxContainer" parent="win_popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="Label" type="Label" parent="win_popup/Items"]
-margin_right = 333.0
-margin_bottom = 52.0
+layout_mode = 2
 text = "i18n_wintext"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Time" type="Label" parent="win_popup/Items"]
-margin_top = 56.0
-margin_right = 333.0
-margin_bottom = 108.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="ButtonNext" type="Button" parent="win_popup/Items"]
-margin_top = 112.0
-margin_right = 333.0
-margin_bottom = 164.0
+layout_mode = 2
 text = "i18n_nextlevel"
 
 [node name="ButtonExit" type="Button" parent="win_popup/Items"]
-margin_top = 168.0
-margin_right = 333.0
-margin_bottom = 220.0
+layout_mode = 2
 text = "i18n_EXITTOMENU"
 
 [node name="CollectionCounter" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
-mouse_filter = 0
 size_flags_vertical = 1
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
-align = 1
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 0
+script = ExtResource("2")
 
 [node name="FPSCounter" type="Label" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -30.0
-margin_top = 10.0
-margin_bottom = 33.0
 grow_horizontal = 0
-mouse_filter = 0
 size_flags_vertical = 1
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
-align = 2
-script = ExtResource( 3 )
+mouse_filter = 0
+script = ExtResource("3")
 
 [node name="TimerCounter" type="Label" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -30.0
-margin_top = 10.0
-margin_bottom = 33.0
 grow_horizontal = 0
-mouse_filter = 0
 size_flags_vertical = 1
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
-align = 2
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 0
+script = ExtResource("6")
 
 [node name="PauseButton" type="TouchScreenButton" parent="."]
-scale = Vector2( 8, 8 )
-normal = ExtResource( 4 )
-pressed = ExtResource( 5 )
+scale = Vector2(8, 8)
 visibility_mode = 1
 
 [node name="RestartLabel" type="Label" parent="."]
 visible = false
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -407.5
-margin_top = -26.0
-margin_right = 407.5
-margin_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Click/press the screen or press space to restart"
-[connection signal="pressed" from="pause_popup/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
-[connection signal="pressed" from="pause_popup/VBoxContainer/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="pause_popup/VBoxContainer/menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="pause_popup/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+
+[connection signal="pressed" from="pause_popup/Panel/VBoxContainer/unpause" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="pause_popup/Panel/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="pause_popup/Panel/VBoxContainer/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="pause_popup/Panel/VBoxContainer/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="win_popup/Items/ButtonNext" to="win_popup" method="_on_ButtonNext_pressed"]
 [connection signal="pressed" from="win_popup/Items/ButtonExit" to="win_popup" method="_on_ButtonExit_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]

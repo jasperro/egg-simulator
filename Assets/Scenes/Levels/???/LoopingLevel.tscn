@@ -1,50 +1,50 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://d0dnsg16mhnm7"]
 
-[ext_resource path="res://Assets/Scenes/CollectibleCube.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Scenes/Platforms/Platform.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Scenes/Platforms.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Scenes/Platforms/loopingfilled.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/Platforms/BoosterPad.tscn" type="PackedScene" id=5]
+[ext_resource type="PackedScene" uid="uid://dqbcvekrqesvy" path="res://Assets/Scenes/CollectibleCube.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bknkxye52tonw" path="res://Assets/Scenes/Platforms/Platform.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://daufn473jg2n7" path="res://Assets/Scenes/Platforms.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Platforms/loopingfilled.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/Platforms/BoosterPad.tscn" id="5"]
 
-[node name="Level" type="Spatial"]
+[node name="Level" type="Node3D"]
 
-[node name="Start" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282645, 50, 0 )
+[node name="Start" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282645, 50, 0)
 
-[node name="Collectibles" type="Spatial" parent="."]
+[node name="Collectibles" type="Node3D" parent="."]
 
-[node name="Collectible1" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37475, 44.0004, 25.6027 )
+[node name="Collectible1" parent="Collectibles" instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37475, 44.0004, 25.6027)
 
-[node name="Collectible2" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0892501, 36.2615, 37.1987 )
+[node name="Collectible2" parent="Collectibles" instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0892501, 36.2615, 37.1987)
 
-[node name="Collectible3" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41475, 30.3752, 50.1327 )
+[node name="Collectible3" parent="Collectibles" instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41475, 30.3752, 50.1327)
 
-[node name="Collectible4" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32444, 27.6954, 62.1471 )
+[node name="Collectible4" parent="Collectibles" instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32444, 27.6954, 62.1471)
 
-[node name="Collectible5" parent="Collectibles" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81747, 25.8297, 66.8419 )
+[node name="Collectible5" parent="Collectibles" instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81747, 25.8297, 66.8419)
 
-[node name="Platforms" parent="." instance=ExtResource( 3 )]
-platformcolor = Color( 1, 0, 0.772549, 1 )
+[node name="Platforms" parent="." instance=ExtResource("3")]
+platformcolor = Color(1, 0, 0.772549, 1)
 
-[node name="Platform1" parent="Platforms" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.906308, -1.69047, 0, 0.422618, 3.62523, 0.5, 41.6887, 17 )
+[node name="Platform1" parent="Platforms" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -1.69047, 0, 0.422618, 3.62523, 0.5, 41.6887, 17)
 
-[node name="Platform4" parent="Platforms" instance=ExtResource( 2 )]
-transform = Transform( 0.621695, -0.470012, -0.626565, 0.584489, 0.810906, -0.0283469, 0.521409, -0.348597, 0.778853, -0.61293, 33.0296, 53.3715 )
+[node name="Platform4" parent="Platforms" instance=ExtResource("2")]
+transform = Transform3D(0.621695, -0.470012, -0.626565, 0.584489, 0.810906, -0.0283469, 0.521409, -0.348597, 0.778853, -0.61293, 33.0296, 53.3715)
 
-[node name="Platform5" parent="Platforms" instance=ExtResource( 2 )]
-transform = Transform( 0.642473, 0.441179, -0.62657, -0.584482, 0.810911, -0.0283404, 0.495589, 0.384427, 0.77885, -11.6492, 28.8682, 51.5065 )
+[node name="Platform5" parent="Platforms" instance=ExtResource("2")]
+transform = Transform3D(0.642473, 0.441179, -0.62657, -0.584482, 0.810911, -0.0283404, 0.495589, 0.384427, 0.77885, -11.6492, 28.8682, 51.5065)
 
-[node name="Platform6" parent="Platforms" instance=ExtResource( 2 )]
-transform = Transform( 0.561914, 0.429714, 0.706823, -0.584482, 0.810911, -0.0283403, -0.585349, -0.3972, 0.706823, -10.0327, 26.491, 62.3383 )
+[node name="Platform6" parent="Platforms" instance=ExtResource("2")]
+transform = Transform3D(0.561914, 0.429714, 0.706823, -0.584482, 0.810911, -0.0283403, -0.585349, -0.3972, 0.706823, -10.0327, 26.491, 62.3383)
 
-[node name="loopingfilled" parent="Platforms" instance=ExtResource( 4 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.66664, 34.5659, 37.2271 )
+[node name="loopingfilled" parent="Platforms" instance=ExtResource("4")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.66664, 34.5659, 37.2271)
 
-[node name="BoosterPad" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 1.2759, 45.3455, 11.9897 )
+[node name="BoosterPad" parent="." instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 1.2759, 45.3455, 11.9897)

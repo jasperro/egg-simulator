@@ -1,4 +1,4 @@
-extends Area
+extends Area3D
 
 const MAXVEL = 17.0
 const MINVEL = 13.0

@@ -1,3 +1,3 @@
-extends Spatial
+extends Node3D
 
-export(Color) var platformcolor := Color(1,0,0,1)
+@export var platformcolor := Color(1,0,0,1)

@@ -1,4 +1,4 @@
-extends Area
+extends Area3D
 
 func _on_ConveyorCollider_area_entered(area):
 	var egg = area.get_parent()
